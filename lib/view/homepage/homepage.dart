@@ -13,18 +13,18 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade800,
+        backgroundColor: Colors.red.shade700,
         actions: [
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.notifications),
-            color: colorconstant.mybutton,
+            color: Colors.white,
           )
         ],
         leading: IconButton(
           onPressed: () {},
           icon: Icon(Icons.menu),
-          color: colorconstant.mybutton,
+          color: Colors.white,
         ),
       ),
       backgroundColor: colorconstant.myprimary,
@@ -66,9 +66,24 @@ class _HomepageState extends State<Homepage> {
               backgroundColor: colorconstant.inactivebutton,
               radius: 100,
               child: Center(
-                child: Text(
-                  'SoS',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'SoS',
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Press 5 seconds..',
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -77,7 +92,7 @@ class _HomepageState extends State<Homepage> {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
+                  color: colorconstant.containerbox,
                   borderRadius: BorderRadius.circular(20)),
               width: 400,
               height: 80,
@@ -115,10 +130,124 @@ class _HomepageState extends State<Homepage> {
                   fontWeight: FontWeight.bold,
                   fontSize: 18),
             ),
-            Container(
-              height: 50,
-              width: 150,
-              color: Colors.amber,
+            SizedBox(
+              height: 30,
+            ),
+            Column(
+              children: [
+                //  first line emergency column
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                        width: 150,
+                        height: 50,
+                        color: colorconstant.containerbox,
+                        child: Center(
+                            child: Text(
+                          'Fire...🔥',
+                          style: TextStyle(
+                              color: colorconstant.secondoryfont,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ))),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                        width: 200,
+                        height: 50,
+                        color: colorconstant.containerbox,
+                        child: Center(
+                            child: Text(
+                          'Medical...🏥',
+                          style: TextStyle(
+                              color: colorconstant.secondoryfont,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        )))
+                  ],
+                ),
+                //  second line emergency column
+
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Container(
+                        width: 150,
+                        height: 50,
+                        color: colorconstant.containerbox,
+                        child: Center(
+                            child: Text(
+                          'Police...👮',
+                          style: TextStyle(
+                              color: colorconstant.secondoryfont,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ))),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                        width: 150,
+                        height: 50,
+                        color: colorconstant.containerbox,
+                        child: Center(
+                            child: Text(
+                          'Ambulance...🚑',
+                          style: TextStyle(
+                              color: colorconstant.secondoryfont,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        )))
+                  ],
+                ),
+// third line emergency coloumn
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Container(
+                        width: 200,
+                        height: 50,
+                        color: colorconstant.containerbox,
+                        child: Center(
+                            child: Text(
+                          'Rescue...🚨',
+                          style: TextStyle(
+                              color: colorconstant.secondoryfont,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ))),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                        width: 150,
+                        height: 50,
+                        color: colorconstant.containerbox,
+                        child: Center(
+                            child: Text(
+                          'Earthquake...🌏',
+                          style: TextStyle(
+                              color: colorconstant.secondoryfont,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        )))
+                  ],
+                )
+              ],
             )
           ],
         ),

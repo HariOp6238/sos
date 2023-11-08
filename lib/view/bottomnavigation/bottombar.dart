@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/contacts/contacts.dart';
 import 'package:sos/view/explore/explore.dart';
 import 'package:sos/view/homepage/homepage.dart';
@@ -91,6 +92,10 @@ class _BottombarState extends State<Bottombar> {
         onPressed: () {
           setState(() {});
         },
+        child: Text(
+          'SoS',
+          style: TextStyle(color: colorconstant.mybutton),
+        ),
         backgroundColor: Colors.white,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
