@@ -13,13 +13,6 @@ class _SplashscreenState extends State<Splashscreen> {
     // ignore: prefer_const_constructors
     return Scaffold(
       backgroundColor: Colors.red,
-      body: Center(
-        child: Container(
-          height: 100,
-          width: 100,
-          color: Colors.indigoAccent,
-        ),
-      ),
     );
   }
 }
