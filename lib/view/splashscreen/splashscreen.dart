@@ -12,7 +12,7 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.red,
     );
   }
 }
