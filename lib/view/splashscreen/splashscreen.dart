@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sos/view/bottomnavigation/bottombar.dart';
-//-import 'package:sos/view/introscreen/introScreen.dart';
+// import 'package:sos/view/homepage/homepage.dart';
+// import 'package:sos/view/bottomnavigation/bottombar.dart';
+// import 'package:sos/view/homepage/homepage.dart';
+import 'package:sos/view/introscreen/IntroScreen.dart';
+// import 'package:sos/view/introscreen/introScreen.dart';
+// import 'package:sos/view/introscreen/introScreen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -16,8 +20,9 @@ class _SplashscreenState extends State<Splashscreen> {
         .then((value) => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => Bottombar(),
+              builder: (context) => IntroScreen(),
             )));
+
     super.initState();
   }
 
