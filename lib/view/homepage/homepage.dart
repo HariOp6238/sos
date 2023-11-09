@@ -175,7 +175,6 @@ class _HomepageState extends State<Homepage> {
                     ],
                   ),
                   //  second line emergency column
-
                   SizedBox(
                     height: 15,
                   ),
