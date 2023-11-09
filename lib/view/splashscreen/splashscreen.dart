@@ -12,7 +12,6 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
     return Scaffold(
-<<<<<<< HEAD
       backgroundColor: Colors.red,
       body: Center(
         child: Container(
@@ -21,9 +20,6 @@ class _SplashscreenState extends State<Splashscreen> {
           color: Colors.indigoAccent,
         ),
       ),
-=======
-      backgroundColor: Colors.amber,
->>>>>>> 97a4ac58fea8fec5d3739c11980b4663006bf98e
     );
   }
 }
