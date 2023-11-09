@@ -94,9 +94,9 @@ class _BottombarState extends State<Bottombar> {
         },
         child: Text(
           'SoS',
-          style: TextStyle(color: colorconstant.mybutton),
+          style: TextStyle(color: colorconstant.myprimary),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: colorconstant.inactivebutton,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: _widgetOptions.elementAt(_selectedIndex),
