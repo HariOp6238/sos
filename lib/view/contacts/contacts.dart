@@ -16,21 +16,23 @@ class _ContactState extends State<Contact> {
   Widget build(BuildContext context) {
     List mycontats = ["police", "fire", "mom", "dad", "friend"];
     return Scaffold(
+      backgroundColor: colorconstant.myprimary,
       appBar: AppBar(
         title: Text(
           "Emergency Contacts",
         ),
-        backgroundColor: colorconstant.mybutton,
+        backgroundColor: Colors.red.shade700,
         actions: [
          IconButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ContactList(),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ContactListScreen(),));
          }, icon:Icon(Icons.contact_emergency))
         ],
         elevation: 0,
       ),
       body: TabContainer(
-        radius: 0,
-        color: Colors.grey[800],
+        
+        
+        color: colorconstant.mybutton,
         children: [
           Container(
             child: Expanded(
@@ -41,17 +43,17 @@ class _ContactState extends State<Contact> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: colorconstant.mybutton,
+                     color: colorconstant.containerbox,
                     ),
                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(width: 40,),
                         Text(
                           mycontats[index],
-                          style: TextStyle(color: colorconstant.myprimary),
+                          style: TextStyle(color: colorconstant.font,fontWeight:FontWeight.bold),
                         ),
                         SizedBox(width: 200,),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.call,color: colorconstant.myprimary),)
+                        IconButton(onPressed: () {}, icon: Icon(Icons.call,color: colorconstant.font),)
                       ],
                     ),
                     height: 70,
@@ -70,17 +72,17 @@ class _ContactState extends State<Contact> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: colorconstant.mybutton,
+                        color: colorconstant.containerbox,
                       ),
                       child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(width: 40,),
                           Text(
                             mycontats[index],
-                            style: TextStyle(color: colorconstant.myprimary),
+                            style: TextStyle(color: colorconstant.font,fontWeight:FontWeight.bold),
                           ),
                           SizedBox(width: 200,),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.call,color: colorconstant.myprimary),)
+                          IconButton(onPressed: () {}, icon: Icon(Icons.call,color: colorconstant.font,),)
                         ],
                       ),
                       height: 70,
@@ -94,6 +96,9 @@ class _ContactState extends State<Contact> {
         tabs: [
           'General',
           'Personal',
+
+          
+          
         ],
       ),
     );
