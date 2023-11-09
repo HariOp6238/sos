@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:sos/view/homepage/homepage.dart';
+import 'package:sos/view/bottomnavigation/bottombar.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class IntroScreenState extends State<IntroScreen> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => Homepage()),
+      MaterialPageRoute(builder: (_) => Bottombar()),
     );
   }
 
