@@ -1,61 +1,59 @@
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
+import 'package:contacts_service/contacts_service.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-class ContactList extends StatefulWidget {
+
+
+class ContactListScreen extends StatefulWidget {
   @override
-  _ContactListState createState() => _ContactListState();
+  _ContactListScreenState createState() => _ContactListScreenState();
 }
 
-class _ContactListState extends State<ContactList> {
-  Iterable<Contact> _contacts = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _getContacts();
-  }
-
-  Future<void> _getContacts() async {
-    Iterable<Contact> contacts = await ContactsService.getContacts();
-    setState(() {
-      _contacts = contacts;
-    });
-  }
-
-  Future<void> _addContact() async {
-    Contact newContact = Contact(
-      givenName: 'John',
-      familyName: 'Doe',
-      emails: [Item(label: 'work', value: 'john.doe@example.com')],
-      phones: [Item(label: 'mobile', value: '+1234567890')],
-    );
-
-    await ContactsService.addContact(newContact);
-    _getContacts();
-  }
+class _ContactListScreenState extends State<ContactListScreen> {
+  List<Contact> _contacts = [];
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          ElevatedButton(
-            onPressed: _addContact,
-            child: Text('Add Contact'),
-          ),
-          Expanded(
-            child: ListView.builder(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Contact List'),
+      ),
+      body: FutureBuilder(
+        future: _getContacts(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            return ListView.builder(
               itemCount: _contacts.length,
               itemBuilder: (context, index) {
-                Contact contact = _contacts.elementAt(index);
+                Contact contact = _contacts[index];
                 return ListTile(
-                  title: Text('${contact.givenName} ${contact.familyName}'),
+                  title: Text(contact.displayName ?? ''),
+                  subtitle: Text(""),
                 );
               },
-            ),
-          ),
-        ],
+            );
+          }
+        },
       ),
     );
+  }
+
+  Future<void> _getContacts() async {
+    // Request permission to access contacts
+    var status = await Permission.contacts.request();
+    if (status.isGranted) {
+      // Get the contacts
+      Iterable<Contact> contacts = await ContactsService.getContacts();
+      setState(() {
+        _contacts = contacts.toList();
+      });
+    } else {
+      // Permission denied
+      print('Permission denied');
+    }
   }
 }
