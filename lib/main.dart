@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sos/view/bottomnavigation/bottombar.dart';
+import 'package:sos/view/splashscreen/splashscreen.dart';
 
 void main() {
   runApp(const Myapp());
@@ -17,7 +18,7 @@ class _MyappState extends State<Myapp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Bottombar(),
+      home: Splashscreen(),
     );
   }
 }
