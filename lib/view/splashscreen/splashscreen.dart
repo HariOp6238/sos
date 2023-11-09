@@ -25,6 +25,13 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.red,
+      body: Center(
+        child: Container(
+          height: 100,
+          width: 100,
+          color: Colors.indigoAccent,
+        ),
+      ),
     );
   }
 }
