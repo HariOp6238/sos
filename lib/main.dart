@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sos/view/bottomnavigation/bottombar.dart';
+
 import 'package:sos/view/splashscreen/splashscreen.dart';
 
 void main() {
