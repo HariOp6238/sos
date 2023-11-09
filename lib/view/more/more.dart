@@ -9,51 +9,45 @@ class More extends StatefulWidget {
 }
 
 class _MoreState extends State<More> {
-  List <String> optionslist = [
-  "Settings",
-  "Help and Support",
-  "About",
-  "Privacy and Policy",
-  "Distress Message"
+  List<String> optionslist = [
+    "Settings",
+    "Help and Support",
+    "About",
+    "Privacy and Policy",
+    "Distress Message"
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: colorconstant.mybutton,
+        backgroundColor: Colors.red.shade700,
         centerTitle: true,
-        title: Text("More Options",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+        title: Text(
+          "More Options",
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
       ),
-      backgroundColor: colorconstant.secondoryfont,
+      backgroundColor: colorconstant.myprimary,
       body: SafeArea(
-          child: Column(
-        children: [
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Expanded(
-                child: Container(
-                  height: 600,
-                  child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    itemCount: optionslist.length,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 60,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: colorconstant.mybutton),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(optionslist[index],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
-                            ),
-                      ),
-                    ),
-                  ),
-                ),
-              ))
-        ],
+          child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: optionslist.length,
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: double.infinity,
+            height: 60,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: colorconstant.containerbox),
+            child: Center(
+                child: Text(optionslist[index],
+                    style: TextStyle(
+                        color: Colors.grey.shade600,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold))),
+          ),
+        ),
       )),
     );
   }
