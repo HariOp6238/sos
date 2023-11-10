@@ -16,7 +16,7 @@ class _ContactState extends State<Contact> {
   Widget build(BuildContext context) {
     List mycontats = ["police", "fire", "mom", "dad", "friend"];
     return Scaffold(
-      backgroundColor: colorconstant.myprimary,
+      backgroundColor: Colors.red,
       appBar: AppBar(
         title: Text(
           "Emergency Contacts",
@@ -32,7 +32,7 @@ class _ContactState extends State<Contact> {
       body: TabContainer(
         
         
-        color: colorconstant.mybutton,
+        color: colorconstant.myprimary,
         children: [
           Container(
             child: Expanded(

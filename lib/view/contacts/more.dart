@@ -1,34 +1,22 @@
-import 'dart:ffi';
-
+import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:sos/view/contacts/more.dart';
-import 'package:sos/view/more/more.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 
-class ContactListScreen extends StatefulWidget {
+class ContactScreen extends StatefulWidget {
   @override
-  _ContactListScreenState createState() => _ContactListScreenState();
+  _ContactScreenState createState() => _ContactScreenState();
 }
 
-class _ContactListScreenState extends State<ContactListScreen> {
-  List<Contact> _contacts = [
-    Contact(androidAccountName: "user",
-     jobTitle: "developer",
-     
-  )
-  ];
+class _ContactScreenState extends State<ContactScreen> {
+  List<Contact> _contacts = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ContactScreen(),));
-        
-      },
-      child: Text("more")),
       appBar: AppBar(
         title: Text('Contact List'),
       ),
@@ -46,12 +34,19 @@ class _ContactListScreenState extends State<ContactListScreen> {
                 Contact contact = _contacts[index];
                 return ListTile(
                   title: Text(contact.displayName ?? ''),
-                  subtitle: Text(contact.jobTitle.toString())
+                  subtitle: Text("gjhvhfh"
+                      ),
                 );
               },
             );
           }
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _launchContactsAppToAddContact();
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -68,6 +63,15 @@ class _ContactListScreenState extends State<ContactListScreen> {
     } else {
       // Permission denied
       print('Permission denied');
+    }
+  }
+
+  void _launchContactsAppToAddContact() async {
+    const url = 'content://com.android.contacts/contacts/new';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      print('Could not launch contacts app');
     }
   }
 }
