@@ -15,9 +15,7 @@ class distressMessage extends StatelessWidget {
         ),
       ),
       body: Column(
-        children: [
-          text
-        ],
+        children: [],
       ),
     );
   }
