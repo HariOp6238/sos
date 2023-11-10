@@ -11,10 +11,11 @@ class More extends StatefulWidget {
 class _MoreState extends State<More> {
   List<String> optionslist = [
     "Settings",
+    "Distress Message",
     "Help and Support",
     "About",
     "Privacy and Policy",
-    "Distress Message"
+    
   ];
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class _MoreState extends State<More> {
         centerTitle: true,
         title: Text(
           "More Options",
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 25),
         ),
       ),
       backgroundColor: colorconstant.myprimary,
@@ -44,7 +45,7 @@ class _MoreState extends State<More> {
                 child: Text(optionslist[index],
                     style: TextStyle(
                         color: Colors.grey.shade600,
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold))),
           ),
         ),
