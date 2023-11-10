@@ -21,16 +21,12 @@ class IntroScreenState extends State<IntroScreen> {
 
   Widget _buildFullscreenImage() {
     return Image.asset(
-      'assets/rescue.png',
+      'assets/4.jpeg',
       fit: BoxFit.cover,
       height: double.infinity,
       width: double.infinity,
       alignment: Alignment.center,
     );
-  }
-
-  Widget _buildImage(String assetName, [double width = 350]) {
-    return Image.asset('assets/rescue.png', width: width);
   }
 
   @override
@@ -42,7 +38,7 @@ class IntroScreenState extends State<IntroScreen> {
       bodyTextStyle: bodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       pageColor: Colors.white,
-      imagePadding: EdgeInsets.zero,
+      //imagePadding: EdgeInsets.zero,
     );
 
     return IntroductionScreen(
@@ -51,15 +47,7 @@ class IntroScreenState extends State<IntroScreen> {
       allowImplicitScrolling: true,
       autoScrollDuration: 3000,
       infiniteAutoScroll: true,
-      globalHeader: Align(
-        alignment: Alignment.topRight,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 16, right: 16),
-            child: _buildImage('flutter.png', 100),
-          ),
-        ),
-      ),
+
       globalFooter: SizedBox(
         width: double.infinity,
         height: 60,
@@ -72,27 +60,7 @@ class IntroScreenState extends State<IntroScreen> {
         ),
       ),
       pages: [
-        PageViewModel(
-          title: "Fractional shares",
-          body:
-              "Instead of having to buy an entire share, invest any amount you want.",
-          image: _buildImage('assets/rescue.png'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "Learn as you go",
-          body:
-              "Download the Stockpile app and master the market with our mini-lesson.",
-          image: _buildImage('assets/rescue.png'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "Kids and teens",
-          body:
-              "Kids and teens can track their stocks 24/7 and place trades that you approve.",
-          image: _buildImage('assets/rescue.png'),
-          decoration: pageDecoration,
-        ),
+        //page 1
         PageViewModel(
           title: "Full Screen Page",
           body:
@@ -101,56 +69,90 @@ class IntroScreenState extends State<IntroScreen> {
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
-            bodyFlex: 2,
-            imageFlex: 3,
+            bodyFlex: 5,
+            imageFlex: 4,
             safeArea: 100,
           ),
         ),
+
+        /// page 2
         PageViewModel(
-          title: "Another title page",
-          body: "Another beautiful body text for this example onboarding",
-          image: _buildImage('assets/rescue1.png'),
-          footer: ElevatedButton(
-            onPressed: () {
-              introKey.currentState?.animateScroll(0);
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.lightBlue,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-            ),
-            child: const Text(
-              'FooButton',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
+          title: "Full Screen Page",
+          body:
+              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+          image: Image.asset('assets/2.jpg'),
           decoration: pageDecoration.copyWith(
-            bodyFlex: 6,
-            imageFlex: 6,
-            safeArea: 80,
+            contentMargin: const EdgeInsets.symmetric(horizontal: 16),
+            fullScreen: true,
+            bodyFlex: 5,
+            imageFlex: 4,
+            safeArea: 100,
           ),
         ),
+
+        //page3
+
         PageViewModel(
-          title: "Title of last page - reversed",
-          bodyWidget: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Click on ", style: bodyStyle),
-              Icon(Icons.edit),
-              Text(" to edit a post", style: bodyStyle),
-            ],
-          ),
+          title: "Full Screen Page",
+          body:
+              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+          image: Image.asset('assets/3.jpg'),
           decoration: pageDecoration.copyWith(
-            bodyFlex: 2,
-            imageFlex: 4,
-            bodyAlignment: Alignment.bottomCenter,
-            imageAlignment: Alignment.topCenter,
+            contentMargin: const EdgeInsets.symmetric(horizontal: 16),
+            fullScreen: true,
+            bodyFlex: 5,
+            imageFlex: 10,
+            safeArea: 100,
           ),
-          image: _buildImage('assets/rescue.png'),
-          reverse: true,
+        ),
+
+        //page 4
+
+        PageViewModel(
+          title: "Full Screen Page",
+          body:
+              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+          image: Image.asset('assets/4.jpg'),
+          decoration: pageDecoration.copyWith(
+            contentMargin: const EdgeInsets.symmetric(horizontal: 16),
+            fullScreen: true,
+            bodyFlex: 0,
+            imageFlex: 4,
+            safeArea: 10,
+          ),
+        ),
+
+        //page 5
+
+        PageViewModel(
+            title: "Full Screen Page",
+            body:
+                "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+            image: Image.asset(
+              'assets/5.jpg',
+              fit: BoxFit.fill,
+            ),
+            decoration: PageDecoration(
+                //pageColor: Colors.transparent,
+                boxDecoration: BoxDecoration(color: Colors.white))),
+
+        //page 6
+
+        PageViewModel(
+          title: "Full Screen Page",
+          body:
+              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+          image: Image.asset('assets/6.jpg'),
+          decoration: pageDecoration.copyWith(
+            contentMargin: const EdgeInsets.symmetric(horizontal: 16),
+            fullScreen: true,
+            bodyFlex: 5,
+            imageFlex: 4,
+            safeArea: 100,
+          ),
         ),
       ],
+
       onDone: () => _onIntroEnd(context),
       onSkip: () => _onIntroEnd(context), // You can override onSkip callback
       showSkipButton: true,
