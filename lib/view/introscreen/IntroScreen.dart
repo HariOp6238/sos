@@ -139,15 +139,22 @@ class IntroScreenState extends State<IntroScreen> {
         //page 6
 
         PageViewModel(
+          image: Center(
+              child: Container(
+                  height: 800,
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/5.jpg',
+                    fit: BoxFit.cover,
+                  ))),
           title: "Full Screen Page",
           body:
               "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-          image: Image.asset('assets/6.jpg'),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
-            bodyFlex: 5,
-            imageFlex: 4,
+            bodyFlex: 8,
+            imageFlex: 1,
             safeArea: 100,
           ),
         ),

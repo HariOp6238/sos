@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 
 import 'package:sos/view/introscreen/IntroScreen.dart';
+import 'package:sos/view/loginpage/loginpage.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -17,7 +18,7 @@ class _SplashscreenState extends State<Splashscreen> {
         .then((value) => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => IntroScreen(),
+              builder: (context) => LoginPage(),
             )));
 
     super.initState();
@@ -43,19 +44,21 @@ class _SplashscreenState extends State<Splashscreen> {
               Text(
                 "RAPID",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic),
+                  color: Colors.white,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  // fontStyle: FontStyle.italic
+                ),
               ),
               SizedBox(width: 10),
               Text(
                 "RESPONCE",
                 style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic),
+                  color: Colors.red,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  // fontStyle: FontStyle.italic
+                ),
               ),
             ],
           ),
