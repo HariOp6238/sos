@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
+import 'package:sos/view/hiddendrawer/hiddendrawer.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -12,6 +13,30 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        backgroundColor: Colors.red.shade700,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: colorconstant.containerbox),
+              child: Text('Welcome'),
+            ),
+            ListTile(
+              title: Text('item 1'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('item 2'),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text('item 3'),
+              onTap: () {},
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.red.shade700,
         actions: [
@@ -21,11 +46,13 @@ class _HomepageState extends State<Homepage> {
             color: Colors.white,
           )
         ],
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
-          color: Colors.white,
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+
+        //   },
+        //   icon: Icon(Icons.menu),
+        //   color: Colors.white,
+        // ),
       ),
       backgroundColor: colorconstant.myprimary,
       body: SingleChildScrollView(
