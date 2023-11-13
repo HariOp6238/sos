@@ -1,5 +1,9 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:lottie/lottie.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/hiddendrawer/hiddendrawer.dart';
 import 'package:sos/view/notification/noti.dart';
@@ -11,8 +15,28 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
+AudioPlayer audioPlayer = AudioPlayer();
+
 class _HomepageState extends State<Homepage> {
+  @override
+  void initState() {
+    // loadAudio();
+    _requestLocationPermission();
+    _getcurrentlocation();
+
+    setState(() {});
+    super.initState();
+  }
+
+  // void loadAudio() async {
+  //   await audioPlayer.setSourceAsset('assets/audio/siren.wav');
+  // }
+
   bool isAnimating = false;
+
+  //location access
+  String locationtext = 'Location: N/A';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +65,7 @@ class _HomepageState extends State<Homepage> {
               ),
               Container(
                 width: 400,
-                height: MediaQuery.sizeOf(context).width * 0.3,
+                height: MediaQuery.sizeOf(context).width * 0.4,
                 child: Column(
                   children: [
                     Text(
@@ -65,7 +89,9 @@ class _HomepageState extends State<Homepage> {
                 ),
               ),
               GestureDetector(
-                onLongPress: () {
+                onTap: () {
+                  // audioPlayer.play(AssetSource('assets/audio/siren.wav'));
+
                   setState(() {
                     isAnimating = !isAnimating;
                   });
@@ -85,29 +111,7 @@ class _HomepageState extends State<Homepage> {
                           style: TextStyle(color: colorconstant.myprimary),
                         ))
                       ],
-                    )
-                    // Center(
-                    //   child: Column(
-                    //     mainAxisAlignment: MainAxisAlignment.center,
-                    //     children: [
-                    //       Text(
-                    //         'SoS',
-                    //         style: TextStyle(
-                    //             fontSize: 30, fontWeight: FontWeight.bold),
-                    //       ),
-                    //       SizedBox(
-                    //         height: 5,
-                    //       ),
-                    //       Text(
-                    //         'Press 5 seconds..',
-                    //         style: TextStyle(
-                    //           fontSize: 15,
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    ),
+                    )),
               ),
               SizedBox(
                 height: 20,
@@ -125,7 +129,7 @@ class _HomepageState extends State<Homepage> {
                       height: 10,
                     ),
                     Text(
-                      'Your current Location..📌',
+                      '  Your current Location..📌',
                       style: TextStyle(
                           color: colorconstant.font,
                           fontWeight: FontWeight.bold),
@@ -134,7 +138,7 @@ class _HomepageState extends State<Homepage> {
                       height: 5,
                     ),
                     Text(
-                      'India,kerala,Kochi kakkanad L16..📍,',
+                      locationtext,
                       style: TextStyle(color: Colors.grey.shade600),
                     ),
                     SizedBox(
@@ -273,5 +277,29 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
     );
+  }
+
+//location permission
+  Future<void> _requestLocationPermission() async {
+    final status = await Permission.location.request();
+    if (status == PermissionStatus.granted) {
+      _getcurrentlocation();
+    } else {}
+  }
+
+  Future<void> _getcurrentlocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
+      Placemark place = placemarks[0];
+
+      setState(() {
+        locationtext = 'Location:${place.locality},${place.country}';
+      });
+    } catch (e) {
+      print('Error Getting Location: $e');
+    }
   }
 }
