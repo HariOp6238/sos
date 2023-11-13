@@ -37,7 +37,7 @@ class _BottombarState extends State<Bottombar> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: StylishBottomBar(
-        backgroundColor: Colors.grey.shade300,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         option: AnimatedBarOptions(
           iconSize: 32,
           barAnimation: BarAnimation.fade,

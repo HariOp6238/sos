@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/hiddendrawer/hiddendrawer.dart';
+import 'package:sos/view/notification/noti.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -10,51 +12,24 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  bool isAnimating = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Colors.red.shade700,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: colorconstant.containerbox),
-              child: Text('Welcome'),
-            ),
-            ListTile(
-              title: Text('item 1'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('item 2'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('item 3'),
-              onTap: () {},
-            )
-          ],
-        ),
-      ),
+      drawer: Mydrawer(),
       appBar: AppBar(
         backgroundColor: Colors.red.shade700,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => noti()));
+            },
             icon: Icon(Icons.notifications),
             color: Colors.white,
           )
         ],
-        // leading: IconButton(
-        //   onPressed: () {
-
-        //   },
-        //   icon: Icon(Icons.menu),
-        //   color: Colors.white,
-        // ),
       ),
-      backgroundColor: colorconstant.myprimary,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
@@ -66,7 +41,7 @@ class _HomepageState extends State<Homepage> {
               ),
               Container(
                 width: 400,
-                height: 100,
+                height: MediaQuery.sizeOf(context).width * 0.3,
                 child: Column(
                   children: [
                     Text(
@@ -75,7 +50,7 @@ class _HomepageState extends State<Homepage> {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
@@ -83,39 +58,56 @@ class _HomepageState extends State<Homepage> {
                         '''Press the SoS button Your distresss message and Location  will be sent to emergency contacts and personal contacts''',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.grey.shade600, fontSize: 16),
+                            color: Colors.grey.shade600, fontSize: 15),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              CircleAvatar(
-                backgroundColor: colorconstant.inactivebutton,
-                radius: 100,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'SoS',
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Press 5 seconds..',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              GestureDetector(
+                onLongPress: () {
+                  setState(() {
+                    isAnimating = !isAnimating;
+                  });
+                },
+                child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 100,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Lottie.asset(
+                            'assets/animations/Animation - 1699885262478.json',
+                            animate: isAnimating),
+                        Positioned(
+                            child: Text(
+                          'SoS',
+                          style: TextStyle(color: colorconstant.myprimary),
+                        ))
+                      ],
+                    )
+                    // Center(
+                    //   child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [
+                    //       Text(
+                    //         'SoS',
+                    //         style: TextStyle(
+                    //             fontSize: 30, fontWeight: FontWeight.bold),
+                    //       ),
+                    //       SizedBox(
+                    //         height: 5,
+                    //       ),
+                    //       Text(
+                    //         'Press 5 seconds..',
+                    //         style: TextStyle(
+                    //           fontSize: 15,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    ),
               ),
               SizedBox(
                 height: 20,
@@ -156,10 +148,7 @@ class _HomepageState extends State<Homepage> {
               ),
               Text(
                 'Whats your Emergency ?',
-                style: TextStyle(
-                    color: colorconstant.font,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(
                 height: 30,
@@ -173,7 +162,7 @@ class _HomepageState extends State<Homepage> {
                         width: 10,
                       ),
                       Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.width * 0.5,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -188,7 +177,7 @@ class _HomepageState extends State<Homepage> {
                         width: 10,
                       ),
                       Container(
-                          width: 200,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -211,7 +200,7 @@ class _HomepageState extends State<Homepage> {
                         width: 30,
                       ),
                       Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -226,7 +215,7 @@ class _HomepageState extends State<Homepage> {
                         width: 10,
                       ),
                       Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -249,7 +238,7 @@ class _HomepageState extends State<Homepage> {
                         width: 20,
                       ),
                       Container(
-                          width: 200,
+                          width: MediaQuery.of(context).size.width * 0.3,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -264,7 +253,7 @@ class _HomepageState extends State<Homepage> {
                         width: 10,
                       ),
                       Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.width * 0.5,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
