@@ -46,6 +46,9 @@ dependencies:
   flutter_contacts: ^1.1.7+1
   provider: ^6.1.1
   lottie: ^2.7.0
+  audioplayers: ^5.2.0
+  geolocator: ^10.1.0
+  geocoding: ^2.1.1
  
 
 dev_dependencies:
@@ -74,6 +77,8 @@ flutter:
   assets:
     - assets/ 
     - assets/animations/
+    - assets/audio/siren.wav
+    
 
      
 
