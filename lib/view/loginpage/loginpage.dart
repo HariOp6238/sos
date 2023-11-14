@@ -1,8 +1,6 @@
-// import 'package:flutter/foundation.dart';
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/introscreen/IntroScreen.dart';
 
@@ -14,8 +12,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final GlobalKey<FormState> _nameKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _phoneKey = GlobalKey<FormState>();
   TextEditingController namecontroller = TextEditingController();
   TextEditingController phonecontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +47,14 @@ class _LoginPageState extends State<LoginPage> {
                 height: 30,
               ),
               TextFormField(
+                key: _nameKey,
+                validator: (value) {
+                  if (namecontroller.text.isEmpty) {
+                    return 'Name Required';
+                  } else {
+                    return null;
+                  }
+                },
                 controller: namecontroller,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
@@ -59,6 +68,14 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               TextFormField(
+                key: _phoneKey,
+                validator: (value) {
+                  if (phonecontroller.text.isEmpty) {
+                    return 'Phone Number Required';
+                  } else {
+                    return null;
+                  }
+                },
                 controller: phonecontroller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -72,9 +89,18 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => IntroScreen()));
+                onTap: () async {
+                  //**   shared pref is used to save the username to the key username **//
+
+                  final SharedPreferences preferences =
+                      await SharedPreferences.getInstance();
+                  preferences.setString('username', namecontroller.text);
+
+                  if (_nameKey.currentState!.validate() &&
+                      _phoneKey.currentState!.validate()) {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => IntroScreen()));
+                  }
                 },
                 child: Container(
                   width: 200,
