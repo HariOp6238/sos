@@ -6,10 +6,7 @@ class settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List <String> settingsList = [
-      "Theme",
-      "Delete Account"
-    ];
+    List<String> settingsList = ["Theme", "Logout"];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red.shade700,
@@ -28,10 +25,9 @@ class settings extends StatelessWidget {
           Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 40),
-              child: Container(
-                height: 150,
-                width: 150,
-                child: Image.asset("assets/profilepic.jpg"),
+              child: CircleAvatar(
+                radius: 70,
+                backgroundImage: AssetImage('assets/men profile.jpg'),
               ),
             ),
           ),
@@ -43,51 +39,54 @@ class settings extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: colorconstant.containerbox),
-                  child: Center(
-                    child: Text("Edit Profile",style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold)),
-                  ),
+              child: Center(
+                child: Text("Edit Profile",
+                    style: TextStyle(
+                        color: Colors.grey.shade600,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold)),
+              ),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Divider(color: colorconstant.font),
-          SizedBox(height: 15,),
-           Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: Container(
-                width: double.infinity,
-                height: 60,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: colorconstant.containerbox),
-                child: Center(
-                    child: Text("Theme",
-                        style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold))),
-                            
-              ),
-           ),
-           Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: Container(
-                width: double.infinity,
-                height: 60,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: colorconstant.containerbox),
-                child: Center(
-                    child: Text("Delete Account",
-                        style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold))),
-                            
-              ),
-           ),
+          SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: double.infinity,
+              height: 60,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: colorconstant.containerbox),
+              child: Center(
+                  child: Text("Theme",
+                      style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold))),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: double.infinity,
+              height: 60,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: colorconstant.containerbox),
+              child: Center(
+                  child: Text("Logout",
+                      style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold))),
+            ),
+          ),
         ],
       ),
     );

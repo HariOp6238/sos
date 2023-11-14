@@ -14,11 +14,9 @@ class Mydrawer extends StatefulWidget {
 }
 
 class _MydrawerState extends State<Mydrawer> {
-  bool _switchValue = true;
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: colorconstant.myprimary,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
@@ -27,8 +25,8 @@ class _MydrawerState extends State<Mydrawer> {
             child: Column(
               children: [
                 CircleAvatar(
-                  backgroundColor: Colors.cyan,
-                  radius: 30,
+                  backgroundImage: AssetImage('assets/men profile.jpg'),
+                  radius: 40,
                 ),
                 SizedBox(
                   height: 10,
@@ -52,7 +50,10 @@ class _MydrawerState extends State<Mydrawer> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              leading: Icon(Icons.person),
+              leading: Icon(
+                Icons.person,
+                color: colorconstant.font,
+              ),
               title: Text(
                 'Edit Profile',
                 style: TextStyle(fontSize: 16, color: colorconstant.font),
@@ -73,7 +74,10 @@ class _MydrawerState extends State<Mydrawer> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              leading: Icon(Icons.light_mode),
+              leading: Icon(
+                Icons.light_mode,
+                color: colorconstant.font,
+              ),
               title: Text(
                 'Theme',
                 style: TextStyle(fontSize: 16, color: colorconstant.font),
@@ -97,7 +101,10 @@ class _MydrawerState extends State<Mydrawer> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
-              leading: Icon(Icons.message),
+              leading: Icon(
+                Icons.message,
+                color: colorconstant.font,
+              ),
               title: Text(
                 'Distress Message',
                 style: TextStyle(fontSize: 16, color: colorconstant.font),

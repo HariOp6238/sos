@@ -19,7 +19,6 @@ class _MoreState extends State<More> {
     "Help and Support",
     "About",
     "Privacy and Policy",
-    
   ];
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,6 @@ class _MoreState extends State<More> {
           style: TextStyle(fontSize: 25),
         ),
       ),
-      backgroundColor: colorconstant.myprimary,
       body: SafeArea(
           child: ListView.builder(
         scrollDirection: Axis.vertical,
@@ -53,7 +51,6 @@ class _MoreState extends State<More> {
                           color: Colors.grey.shade600,
                           fontSize: 16,
                           fontWeight: FontWeight.bold))),
-                          
             ),
           ),
         ),
@@ -62,22 +59,42 @@ class _MoreState extends State<More> {
   }
 }
 
-void navigateToPage(BuildContext context,int pageindex){
-switch (pageindex){
-  case 0:
-  Navigator.push(context, MaterialPageRoute(builder: (context) => settings(),));
-  break;
-  case 1:
-  Navigator.push(context, MaterialPageRoute(builder: (context) => distressMessage(),));
-  break;
-  case 2:
-  Navigator.push(context, MaterialPageRoute(builder: (context) => helpDesk(),));
-  break;
-  case 3:
-  Navigator.push(context, MaterialPageRoute(builder: (context) => About(),));
-  break;
-  case 4:
-  Navigator.push(context, MaterialPageRoute(builder: (context) => About(),));
-  break;
-}
+void navigateToPage(BuildContext context, int pageindex) {
+  switch (pageindex) {
+    case 0:
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => settings(),
+          ));
+      break;
+    case 1:
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => distressMessage(),
+          ));
+      break;
+    case 2:
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => helpDesk(),
+          ));
+      break;
+    case 3:
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => About(),
+          ));
+      break;
+    case 4:
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => About(),
+          ));
+      break;
+  }
 }

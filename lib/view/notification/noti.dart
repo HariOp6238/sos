@@ -16,6 +16,7 @@ class _notiState extends State<noti> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [Text('No new Notifications')],
         ),
       ),
