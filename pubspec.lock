@@ -384,6 +384,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  lottie:
+    dependency: "direct main"
+    description:
+      name: lottie
+      sha256: a93542cc2d60a7057255405f62252533f8e8956e7e06754955669fd32fb4b216
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.0"
   matcher:
     dependency: transitive
     description:
@@ -536,6 +544,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.6"
+  pointycastle:
+    dependency: transitive
+    description:
+      name: pointycastle
+      sha256: "7c1e5f0d23c9016c5bbd8b1473d0d3fb3fc851b876046039509e18e0c7485f2c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.7.3"
+  provider:
+    dependency: "direct main"
+    description:
+      name: provider
+      sha256: "9a96a0a19b594dbc5bf0f1f27d2bc67d5f95957359b461cd9feb44ed6ae75096"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.1"
   quiver:
     dependency: transitive
     description:
@@ -557,6 +581,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  sprintf:
+    dependency: transitive
+    description:
+      name: sprintf
+      sha256: "1fc9ffe69d4df602376b52949af107d8f5703b77cda567c4d7d86a0693120f23"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.0"
+  sqflite:
+    dependency: "direct main"
+    description:
+      name: sqflite
+      sha256: "591f1602816e9c31377d5f008c2d9ef7b8aca8941c3f89cc5fd9d84da0c38a9a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
+  sqflite_common:
+    dependency: transitive
+    description:
+      name: sqflite_common
+      sha256: "8ed044102f3135add97be8653662052838859f5400075ef227f8ad72ae320803"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.0+1"
   stack_trace:
     dependency: transitive
     description:
