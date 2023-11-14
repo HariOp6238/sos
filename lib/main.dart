@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sos/controller/contactclass.dart';
 
 import 'package:sos/view/splashscreen/splashscreen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await HomePageController.initDb();
   runApp(const Myapp());
 }
 

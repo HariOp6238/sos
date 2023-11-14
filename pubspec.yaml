@@ -44,6 +44,8 @@ dependencies:
   google_fonts:  ^4.0.3
   url_launcher: ^6.2.1
   flutter_contacts: ^1.1.7+1
+  material_dialogs: ^1.1.4
+  sqflite: ^2.3.0
  
 
 dev_dependencies:
