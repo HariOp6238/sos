@@ -11,14 +11,14 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final GlobalKey<FormState> _nameKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _phoneKey = GlobalKey<FormState>();
-  TextEditingController namecontroller = TextEditingController();
-  TextEditingController phonecontroller = TextEditingController();
+final GlobalKey<FormState> _nameKey = GlobalKey<FormState>();
+final GlobalKey<FormState> _phoneKey = GlobalKey<FormState>();
 
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController namecontroller = TextEditingController();
+    TextEditingController phonecontroller = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -46,44 +46,48 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 30,
               ),
-              TextFormField(
-                key: _nameKey,
-                validator: (value) {
-                  if (namecontroller.text.isEmpty) {
-                    return 'Name Required';
-                  } else {
-                    return null;
-                  }
-                },
-                controller: namecontroller,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.grey.shade400,
-                    hintText: 'Enter Your Name',
-                    hintStyle: TextStyle(color: Colors.grey.shade800),
-                    border: OutlineInputBorder()),
+              Form(
+                child: TextFormField(
+                  key: _nameKey,
+                  validator: (value) {
+                    if (namecontroller.text.contains('@')) {
+                      return 'Name Required';
+                    } else {
+                      return null;
+                    }
+                  },
+                  controller: namecontroller,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.grey.shade400,
+                      hintText: 'Enter Your Name',
+                      hintStyle: TextStyle(color: Colors.grey.shade800),
+                      border: OutlineInputBorder()),
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
-              TextFormField(
-                key: _phoneKey,
-                validator: (value) {
-                  if (phonecontroller.text.isEmpty) {
-                    return 'Phone Number Required';
-                  } else {
-                    return null;
-                  }
-                },
-                controller: phonecontroller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.grey.shade400,
-                    hintText: 'Enter Your Phone Number',
-                    hintStyle: TextStyle(color: Colors.grey.shade800),
-                    border: OutlineInputBorder()),
+              Form(
+                child: TextFormField(
+                  key: _phoneKey,
+                  validator: (value) {
+                    if (phonecontroller.text.contains('')) {
+                      return 'Phone Number Required';
+                    } else {
+                      return null;
+                    }
+                  },
+                  controller: phonecontroller,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.grey.shade400,
+                      hintText: 'Enter Your Phone Number',
+                      hintStyle: TextStyle(color: Colors.grey.shade800),
+                      border: OutlineInputBorder()),
+                ),
               ),
               SizedBox(
                 height: 20,
@@ -96,11 +100,13 @@ class _LoginPageState extends State<LoginPage> {
                       await SharedPreferences.getInstance();
                   preferences.setString('username', namecontroller.text);
 
-                  if (_nameKey.currentState!.validate() &&
-                      _phoneKey.currentState!.validate()) {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => IntroScreen()));
-                  }
+                  // if (_nameKey.currentState!.validate() &&
+                  //     _phoneKey.currentState!.validate()) {
+                  //   Navigator.pushReplacement(context,
+                  //       MaterialPageRoute(builder: (context) => IntroScreen()));
+                  // }
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => IntroScreen()));
                 },
                 child: Container(
                   width: 200,
