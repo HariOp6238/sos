@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sos/controller/themecontroller.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/more/subscreens/distress_message.dart';
-import 'package:sos/view/more/subscreens/settings.dart';
 
 class Mydrawer extends StatefulWidget {
   const Mydrawer({super.key});
@@ -51,19 +52,16 @@ class _MydrawerState extends State<Mydrawer> {
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
               leading: Icon(
-                Icons.person,
+                Icons.message_outlined,
                 color: colorconstant.font,
               ),
               title: Text(
-                'Edit Profile',
+                'Distress Message',
                 style: TextStyle(fontSize: 16, color: colorconstant.font),
               ),
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => settings(),
-                    ));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => distressMessage()));
               },
               tileColor: colorconstant.containerbox,
             ),
@@ -102,22 +100,65 @@ class _MydrawerState extends State<Mydrawer> {
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
               leading: Icon(
-                Icons.message,
+                Icons.logout,
                 color: colorconstant.font,
               ),
               title: Text(
-                'Distress Message',
+                'Logout',
                 style: TextStyle(fontSize: 16, color: colorconstant.font),
               ),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => distressMessage()));
+                _showMyDialog();
               },
               tileColor: colorconstant.containerbox,
             ),
           )
         ],
       ),
+    );
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Alert !',
+            style: TextStyle(color: colorconstant.mybutton),
+          ),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Do You Want to Logout'),
+                Text('Would you like to approve of this message?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text(
+                'Approve',
+                style: TextStyle(color: colorconstant.mybutton),
+              ),
+              onPressed: () async {
+                final SharedPreferences preferences =
+                    await SharedPreferences.getInstance();
+                preferences.remove('username');
+
+                SystemNavigator.pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
