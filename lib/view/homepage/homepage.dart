@@ -1,6 +1,12 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:lottie/lottie.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/hiddendrawer/hiddendrawer.dart';
+import 'package:sos/view/notification/noti.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -9,52 +15,45 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
+AudioPlayer audioPlayer = AudioPlayer();
+
 class _HomepageState extends State<Homepage> {
+  @override
+  void initState() {
+    // loadAudio();
+    _requestLocationPermission();
+    _getcurrentlocation();
+
+    setState(() {});
+    super.initState();
+  }
+
+  // void loadAudio() async {
+  //   await audioPlayer.setSourceAsset('assets/audio/siren.wav');
+  // }
+
+  bool isAnimating = false;
+
+  //location access
+  String locationtext = 'Location: N/A';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Colors.red.shade700,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: colorconstant.containerbox),
-              child: Text('Welcome'),
-            ),
-            ListTile(
-              title: Text('item 1'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('item 2'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('item 3'),
-              onTap: () {},
-            )
-          ],
-        ),
-      ),
+      drawer: Mydrawer(),
       appBar: AppBar(
         backgroundColor: Colors.red.shade700,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => noti()));
+            },
             icon: Icon(Icons.notifications),
             color: Colors.white,
           )
         ],
-        // leading: IconButton(
-        //   onPressed: () {
-
-        //   },
-        //   icon: Icon(Icons.menu),
-        //   color: Colors.white,
-        // ),
       ),
-      backgroundColor: colorconstant.myprimary,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
@@ -66,7 +65,7 @@ class _HomepageState extends State<Homepage> {
               ),
               Container(
                 width: 400,
-                height: 100,
+                height: MediaQuery.sizeOf(context).width * 0.4,
                 child: Column(
                   children: [
                     Text(
@@ -75,7 +74,7 @@ class _HomepageState extends State<Homepage> {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
@@ -83,39 +82,36 @@ class _HomepageState extends State<Homepage> {
                         '''Press the SoS button Your distresss message and Location  will be sent to emergency contacts and personal contacts''',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.grey.shade600, fontSize: 16),
+                            color: Colors.grey.shade600, fontSize: 15),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              CircleAvatar(
-                backgroundColor: colorconstant.inactivebutton,
-                radius: 100,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'SoS',
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Press 5 seconds..',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              GestureDetector(
+                onTap: () {
+                  // audioPlayer.play(AssetSource('assets/audio/siren.wav'));
+
+                  setState(() {
+                    isAnimating = !isAnimating;
+                  });
+                },
+                child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 100,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Lottie.asset(
+                            'assets/animations/Animation - 1699885262478.json',
+                            animate: isAnimating),
+                        Positioned(
+                            child: Text(
+                          'SoS',
+                          style: TextStyle(color: colorconstant.myprimary),
+                        ))
+                      ],
+                    )),
               ),
               SizedBox(
                 height: 20,
@@ -133,7 +129,7 @@ class _HomepageState extends State<Homepage> {
                       height: 10,
                     ),
                     Text(
-                      'Your current Location..📌',
+                      '  Your current Location..📌',
                       style: TextStyle(
                           color: colorconstant.font,
                           fontWeight: FontWeight.bold),
@@ -142,7 +138,7 @@ class _HomepageState extends State<Homepage> {
                       height: 5,
                     ),
                     Text(
-                      'India,kerala,Kochi kakkanad L16..📍,',
+                      locationtext,
                       style: TextStyle(color: Colors.grey.shade600),
                     ),
                     SizedBox(
@@ -156,10 +152,7 @@ class _HomepageState extends State<Homepage> {
               ),
               Text(
                 'Whats your Emergency ?',
-                style: TextStyle(
-                    color: colorconstant.font,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(
                 height: 30,
@@ -173,7 +166,7 @@ class _HomepageState extends State<Homepage> {
                         width: 10,
                       ),
                       Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.width * 0.5,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -188,7 +181,7 @@ class _HomepageState extends State<Homepage> {
                         width: 10,
                       ),
                       Container(
-                          width: 200,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -211,7 +204,7 @@ class _HomepageState extends State<Homepage> {
                         width: 30,
                       ),
                       Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -226,7 +219,7 @@ class _HomepageState extends State<Homepage> {
                         width: 10,
                       ),
                       Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.width * 0.4,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -249,7 +242,7 @@ class _HomepageState extends State<Homepage> {
                         width: 20,
                       ),
                       Container(
-                          width: 200,
+                          width: MediaQuery.of(context).size.width * 0.3,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -264,7 +257,7 @@ class _HomepageState extends State<Homepage> {
                         width: 10,
                       ),
                       Container(
-                          width: 150,
+                          width: MediaQuery.of(context).size.width * 0.5,
                           height: 50,
                           color: colorconstant.containerbox,
                           child: Center(
@@ -284,5 +277,29 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
     );
+  }
+
+//location permission
+  Future<void> _requestLocationPermission() async {
+    final status = await Permission.location.request();
+    if (status == PermissionStatus.granted) {
+      _getcurrentlocation();
+    } else {}
+  }
+
+  Future<void> _getcurrentlocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(position.latitude, position.longitude);
+      Placemark place = placemarks[0];
+
+      setState(() {
+        locationtext = 'Location:${place.locality},${place.country}';
+      });
+    } catch (e) {
+      print('Error Getting Location: $e');
+    }
   }
 }
