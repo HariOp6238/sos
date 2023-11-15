@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 
-import 'package:sos/view/introscreen/IntroScreen.dart';
+// import 'package:sos/view/introscreen/IntroScreen.dart';
 import 'package:sos/view/loginpage/loginpage.dart';
 
 class Splashscreen extends StatefulWidget {
