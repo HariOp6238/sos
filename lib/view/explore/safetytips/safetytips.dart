@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
-import 'package:sos/view/explore/disaster/disaster.dart';
-import 'package:sos/view/explore/health/health.dart';
-import 'package:sos/view/explore/realtime/realtime.dart';
-import 'package:sos/view/explore/safetytips/safetytips.dart';
+import 'package:sos/view/explore/safetytips/allergic.dart';
+import 'package:sos/view/explore/safetytips/burn.dart';
+import 'package:sos/view/explore/safetytips/chocking.dart';
+import 'package:sos/view/explore/safetytips/cutswounds.dart';
+import 'package:sos/view/explore/safetytips/dislocatejoints.dart';
+import 'package:sos/view/explore/safetytips/drowning.dart';
 
-class Explore extends StatefulWidget {
-  const Explore({super.key});
+class Safety extends StatefulWidget {
+  const Safety({super.key});
 
   @override
-  State<Explore> createState() => _ExploreState();
+  State<Safety> createState() => _SafetyState();
 }
 
-class _ExploreState extends State<Explore> {
+class _SafetyState extends State<Safety> {
   List<String> optionslist = [
-    "Safety Tips",
-    "Disaster preparednes",
-    "Health centers around me",
-    "Real time incidents",
+    "😷 Allergic Reactions",
+    "🔥 Burn",
+    "😲 Chocking",
+    "🤕 Cuts and Wounds",
+    "🤕 Dislocated Joints",
+    "🌊 Drowning",
   ];
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,7 @@ class _ExploreState extends State<Explore> {
         backgroundColor: Colors.red.shade700,
         centerTitle: true,
         title: Text(
-          "Explore",
+          "Safety Tips",
           style: TextStyle(fontSize: 25),
         ),
       ),
@@ -38,7 +42,7 @@ class _ExploreState extends State<Explore> {
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
-            onTap: () => navigate(context, index),
+            onTap: () => navigates(context, index),
             child: Container(
               width: double.infinity,
               height: 60,
@@ -59,34 +63,43 @@ class _ExploreState extends State<Explore> {
   }
 }
 
-void navigate(BuildContext context, int pageindex) {
+void navigates(BuildContext context, int pageindex) {
   switch (pageindex) {
     case 0:
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Safety(),
+            builder: (context) => allergy(),
           ));
       break;
     case 1:
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Disaster(),
+            builder: (context) => Burn(),
           ));
       break;
     case 2:
       Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Health(),
-          ));
+          context, MaterialPageRoute(builder: (context) => chocking()));
       break;
     case 3:
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Real(),
+            builder: (context) => cutswoods(),
+          ));
+      break;
+    case 4:
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Dislocated()));
+
+      break;
+    case 5:
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Drowning(),
           ));
       break;
   }
