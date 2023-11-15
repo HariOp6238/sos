@@ -14,11 +14,19 @@ class _allergyState extends State<allergy> {
       appBar: AppBar(
         backgroundColor: Colors.red.shade700,
         title: Center(
-            child: Text(
-          "Allergic Reactions",
-          style: TextStyle(color: Colors.white, fontSize: 25),
-        )),
+          child: Column(
+            children: [
+              Text(
+                "Allergic Reactions",
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              
+              
+            ],
+          ),
+        ),
       ),
     );
   }
+
 }
