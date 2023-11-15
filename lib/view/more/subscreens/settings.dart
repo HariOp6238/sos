@@ -18,10 +18,6 @@ class settings extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // Padding(
-          //   padding: const EdgeInsets.only(right: 320),
-          //   child: Container(height: 70,width: 70,child: Image.asset("assets/logo.png"),),
-          // ),
           Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 40),
