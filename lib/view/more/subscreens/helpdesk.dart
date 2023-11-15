@@ -12,7 +12,7 @@ class _helpDeskState extends State<helpDesk> {
   List<String> helpList = [
     "I am not able to send messages.",
     "I am not able to call.",
-    "My app is working correctly.",
+    "My app is not working correctly.",
     "SMS,Phone,Email.",
     "Other.",
   ];
@@ -31,7 +31,7 @@ class _helpDeskState extends State<helpDesk> {
         children: [
           Container(
             width: double.infinity,
-            height: MediaQuery.sizeOf(context).height * 0.6,
+            height: 400,
             child: ListView.builder(
               itemCount: helpList.length,
               itemBuilder: (context, index) => Column(

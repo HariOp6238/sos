@@ -51,6 +51,7 @@ dependencies:
   geocoding: ^2.1.1
   material_dialogs: ^1.1.4
   sqflite: ^2.3.0
+  shared_preferences: ^2.2.2
  
 
 dev_dependencies:

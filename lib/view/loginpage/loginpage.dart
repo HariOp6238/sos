@@ -1,8 +1,6 @@
-// import 'package:flutter/foundation.dart';
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/introscreen/IntroScreen.dart';
 
@@ -13,11 +11,14 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+final GlobalKey<FormState> _nameKey = GlobalKey<FormState>();
+final GlobalKey<FormState> _phoneKey = GlobalKey<FormState>();
+
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController namecontroller = TextEditingController();
-  TextEditingController phonecontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    TextEditingController namecontroller = TextEditingController();
+    TextEditingController phonecontroller = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -45,34 +46,65 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 30,
               ),
-              TextFormField(
-                controller: namecontroller,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.grey.shade400,
-                    hintText: 'Enter Your Name',
-                    hintStyle: TextStyle(color: Colors.grey.shade800),
-                    border: OutlineInputBorder()),
+              Form(
+                child: TextFormField(
+                  key: _nameKey,
+                  validator: (value) {
+                    if (namecontroller.text.contains('@')) {
+                      return 'Name Required';
+                    } else {
+                      return null;
+                    }
+                  },
+                  controller: namecontroller,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.grey.shade400,
+                      hintText: 'Enter Your Name',
+                      hintStyle: TextStyle(color: Colors.grey.shade800),
+                      border: OutlineInputBorder()),
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
-              TextFormField(
-                controller: phonecontroller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.grey.shade400,
-                    hintText: 'Enter Your Phone Number',
-                    hintStyle: TextStyle(color: Colors.grey.shade800),
-                    border: OutlineInputBorder()),
+              Form(
+                child: TextFormField(
+                  key: _phoneKey,
+                  validator: (value) {
+                    if (phonecontroller.text.contains('')) {
+                      return 'Phone Number Required';
+                    } else {
+                      return null;
+                    }
+                  },
+                  controller: phonecontroller,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.grey.shade400,
+                      hintText: 'Enter Your Phone Number',
+                      hintStyle: TextStyle(color: Colors.grey.shade800),
+                      border: OutlineInputBorder()),
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
               GestureDetector(
-                onTap: () {
+                onTap: () async {
+                  //**   shared pref is used to save the username to the key username **//
+
+                  final SharedPreferences preferences =
+                      await SharedPreferences.getInstance();
+                  preferences.setString('username', namecontroller.text);
+
+                  // if (_nameKey.currentState!.validate() &&
+                  //     _phoneKey.currentState!.validate()) {
+                  //   Navigator.pushReplacement(context,
+                  //       MaterialPageRoute(builder: (context) => IntroScreen()));
+                  // }
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => IntroScreen()));
                 },
