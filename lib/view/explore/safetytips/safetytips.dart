@@ -49,16 +49,19 @@ class _SafetyState extends State<Safety> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: colorconstant.containerbox),
-              child: Center(
-                  child: Text(optionslist[index],
-                      style: TextStyle(
-                          color: Colors.grey.shade600,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold))),
+             
+                  child: Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Text(optionslist[index],
+                        style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
+                  )),
             ),
           ),
         ),
-      )),
+      ),
     );
   }
 }
