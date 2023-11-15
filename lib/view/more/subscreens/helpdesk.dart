@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sos/view/more/subscreens/about.dart';
 
 class helpDesk extends StatefulWidget {
   const helpDesk({super.key});
@@ -48,7 +49,7 @@ class _helpDeskState extends State<helpDesk> {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(helpList[index],
                                 style: TextStyle(
-                                    color: Colors.grey.shade600,
+                                    
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold)),
                           ),
@@ -68,6 +69,7 @@ class _helpDeskState extends State<helpDesk> {
               ),
             ),
           ),
+          Spacer(),
           Padding(
             padding: const EdgeInsets.only(top: 147),
             child: Container(
@@ -78,16 +80,15 @@ class _helpDeskState extends State<helpDesk> {
                 children: [
                   Text("Still have a question?",
                       style: TextStyle(
-                          color: Colors.grey.shade600,
+                          
                           fontSize: 16,
                           fontWeight: FontWeight.bold)),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Text("CONTACT",
-                        style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold)),
+                    padding:  EdgeInsets.only(left: 10),
+                    child: TextButton(child: Text("Contact",style: TextStyle(fontSize: 18),),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => About(),));
+                      },),
                   ),
                 ],
               ),
