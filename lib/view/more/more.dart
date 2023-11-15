@@ -3,6 +3,7 @@ import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/more/subscreens/about.dart';
 import 'package:sos/view/more/subscreens/distress_message.dart';
 import 'package:sos/view/more/subscreens/helpdesk.dart';
+import 'package:sos/view/more/subscreens/privacypolicy.dart';
 import 'package:sos/view/more/subscreens/settings.dart';
 
 class More extends StatefulWidget {
@@ -77,7 +78,7 @@ switch (pageindex){
   Navigator.push(context, MaterialPageRoute(builder: (context) => About(),));
   break;
   case 4:
-  Navigator.push(context, MaterialPageRoute(builder: (context) => About(),));
+  Navigator.push(context, MaterialPageRoute(builder: (context) => privacyPolicy(),));
   break;
 }
 }
