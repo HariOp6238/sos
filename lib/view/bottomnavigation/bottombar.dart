@@ -5,7 +5,6 @@ import 'package:sos/view/explore/explore.dart';
 import 'package:sos/view/homepage/homepage.dart';
 import 'package:sos/view/more/more.dart';
 import 'package:stylish_bottom_bar/model/bar_items.dart';
-
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
 class Bottombar extends StatefulWidget {

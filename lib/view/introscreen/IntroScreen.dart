@@ -52,9 +52,12 @@ class IntroScreenState extends State<IntroScreen> {
         width: double.infinity,
         height: 60,
         child: ElevatedButton(
+         style: ElevatedButton.styleFrom(backgroundColor:Color.fromARGB(255, 193, 20, 8) ),
+          
           child: const Text(
             'Let\'s go right away!',
             style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+          
           ),
           onPressed: () => _onIntroEnd(context),
         ),
@@ -205,9 +208,9 @@ class IntroScreenState extends State<IntroScreen> {
       showBackButton: false,
       //rtl: true, // Display as right-to-left
       back: const Icon(Icons.arrow_back),
-      skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
-      next: const Icon(Icons.arrow_forward),
-      done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+      skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600,color: Color.fromARGB(255, 205, 12, 12))),
+      next: const Icon(Icons.arrow_forward,color: Color.fromARGB(255, 213, 14, 14),),
+      done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600,color: Color.fromARGB(255, 213, 14, 14),)),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
       controlsPadding: kIsWeb
@@ -218,7 +221,8 @@ class IntroScreenState extends State<IntroScreen> {
         color: Color(0xFFBDBDBD),
         activeSize: Size(22.0, 10.0),
         activeShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+          
+          borderRadius: BorderRadius.all(Radius.circular(25.0),),
         ),
       ),
       dotsContainerDecorator: const ShapeDecoration(
