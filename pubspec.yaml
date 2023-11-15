@@ -42,7 +42,16 @@ dependencies:
   hidden_drawer_menu: ^3.0.1
   introduction_screen: ^3.1.12
   google_fonts:  ^4.0.3
- 
+  url_launcher: ^6.2.1
+  flutter_contacts: ^1.1.7+1
+  provider: ^6.1.1
+  lottie: ^2.7.0
+  audioplayers: ^5.2.0
+  geolocator: ^10.1.0
+  geocoding: ^2.1.1
+  material_dialogs: ^1.1.4
+  sqflite: ^2.3.0
+  shared_preferences: ^2.2.2
  
 
 dev_dependencies:
@@ -70,6 +79,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/ 
+    - assets/animations/
+    - assets/audio/siren.mp3
+    
+
      
 
   # An image asset can refer to one or more resolution-specific "variants", see

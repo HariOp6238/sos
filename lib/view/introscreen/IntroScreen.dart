@@ -19,15 +19,15 @@ class IntroScreenState extends State<IntroScreen> {
     );
   }
 
-  Widget _buildFullscreenImage() {
-    return Image.asset(
-      'assets/4.jpeg',
-      fit: BoxFit.cover,
-      height: double.infinity,
-      width: double.infinity,
-      alignment: Alignment.center,
-    );
-  }
+  // Widget _buildFullscreenImage() {
+  //   return Image.asset(
+  //     'assets/4.jpeg',
+  //     fit: BoxFit.cover,
+  //     height: double.infinity,
+  //     width: double.infinity,
+  //     alignment: Alignment.center,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -65,30 +65,44 @@ class IntroScreenState extends State<IntroScreen> {
       pages: [
         //page 1
         PageViewModel(
+          image: Center(
+              child: Container(
+                  height: 800,
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/2.png',
+                    fit: BoxFit.cover,
+                  ))),
           title: "Full Screen Page",
           body:
               "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-          image: _buildFullscreenImage(),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
             bodyFlex: 5,
-            imageFlex: 4,
+            imageFlex: 8,
             safeArea: 100,
           ),
         ),
 
         /// page 2
         PageViewModel(
+          image: Center(
+              child: Container(
+                  height: 800,
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/8.jpg',
+                    fit: BoxFit.cover,
+                  ))),
           title: "Full Screen Page",
           body:
               "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-          image: Image.asset('assets/2.jpg'),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
             bodyFlex: 5,
-            imageFlex: 4,
+            imageFlex: 8,
             safeArea: 100,
           ),
         ),
@@ -96,15 +110,22 @@ class IntroScreenState extends State<IntroScreen> {
         //page3
 
         PageViewModel(
+          image: Center(
+              child: Container(
+                  height: 800,
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/7.jpg',
+                    fit: BoxFit.cover,
+                  ))),
           title: "Full Screen Page",
           body:
               "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-          image: Image.asset('assets/3.jpg'),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
             bodyFlex: 5,
-            imageFlex: 10,
+            imageFlex: 1,
             safeArea: 100,
           ),
         ),
@@ -112,45 +133,68 @@ class IntroScreenState extends State<IntroScreen> {
         //page 4
 
         PageViewModel(
+          image: Center(
+              child: Container(
+                  height: 800,
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/3.jpg',
+                    fit: BoxFit.cover,
+                  ))),
           title: "Full Screen Page",
           body:
               "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-          image: Image.asset('assets/4.jpg'),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
-            bodyFlex: 0,
-            imageFlex: 4,
-            safeArea: 10,
+            bodyFlex: 5,
+            imageFlex: 5,
+            safeArea: 100,
           ),
         ),
 
         //page 5
 
         PageViewModel(
-            title: "Full Screen Page",
-            body:
-                "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-            image: Image.asset(
-              'assets/5.jpg',
-              fit: BoxFit.fill,
-            ),
-            decoration: PageDecoration(
-                //pageColor: Colors.transparent,
-                boxDecoration: BoxDecoration(color: Colors.white))),
-
-        //page 6
-
-        PageViewModel(
+          image: Center(
+              child: Container(
+                  height: 800,
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/4.jpg',
+                    fit: BoxFit.cover,
+                  ))),
           title: "Full Screen Page",
           body:
               "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
-          image: Image.asset('assets/6.jpg'),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
             bodyFlex: 5,
-            imageFlex: 4,
+            imageFlex: 11,
+            safeArea: 100,
+          ),
+        ),
+
+        //page 6
+
+        PageViewModel(
+          image: Center(
+              child: Container(
+                  height: 800,
+                  width: double.infinity,
+                  child: Image.asset(
+                    'assets/5.jpg',
+                    fit: BoxFit.cover,
+                  ))),
+          title: "Full Screen Page",
+          body:
+              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+          decoration: pageDecoration.copyWith(
+            contentMargin: const EdgeInsets.symmetric(horizontal: 16),
+            fullScreen: true,
+            bodyFlex: 8,
+            imageFlex: 1,
             safeArea: 100,
           ),
         ),

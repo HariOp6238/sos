@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:sos/utils/constant/colorconstant/colors.dart';
+import 'dart:async';
 
-import 'package:sos/view/introscreen/IntroScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sos/utils/constant/colorconstant/colors.dart';
+import 'package:sos/view/bottomnavigation/bottombar.dart';
+
+import 'package:sos/view/loginpage/loginpage.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -11,16 +15,31 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
+  //** using shared_pref username is checked null or not  using validation function below**//
+
+  String? finalusername;
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 2))
-        .then((value) => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => IntroScreen(),
-            )));
+    Getvalidate().whenComplete(() {
+      Timer(
+          Duration(seconds: 3),
+          () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      finalusername == null ? LoginPage() : Bottombar())));
+    });
 
     super.initState();
+  }
+
+//** using shared pref username is obtained and assigned to final username**//
+  Future<void> Getvalidate() async {
+    final SharedPreferences preferences = await SharedPreferences.getInstance();
+    var obtainedname = preferences.getString('username');
+    setState(() {
+      finalusername = obtainedname;
+    });
   }
 
   @override
@@ -43,19 +62,21 @@ class _SplashscreenState extends State<Splashscreen> {
               Text(
                 "RAPID",
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic),
+                  color: Colors.white,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  // fontStyle: FontStyle.italic
+                ),
               ),
               SizedBox(width: 10),
               Text(
                 "RESPONCE",
                 style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic),
+                  color: Colors.red,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  // fontStyle: FontStyle.italic
+                ),
               ),
             ],
           ),
