@@ -15,11 +15,10 @@ class _cutswoodsState extends State<cutswoods> {
   Widget build(BuildContext context) {
     return  Scaffold( appBar: AppBar(
           backgroundColor: Colors.red.shade700,
-          title: Center(
-              child: Text(
+          title: Text(
             "Cuts and Woods",
-            style: TextStyle(color: Colors.white, fontSize: 25),
-          )),
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
         ),
   body: SingleChildScrollView(
         child: Column(
@@ -60,6 +59,7 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['description1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                             height: 1.5,
                             fontSize: 16,
                           ),
                         ),
@@ -75,6 +75,7 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['description2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                             height: 1.5,
                             fontSize: 16,
                           ),
                         ),
@@ -90,6 +91,7 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['description3'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                             height: 1.5,
                             fontSize: 16,
                           ),
                         ),
@@ -105,12 +107,13 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['description4'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            height: 1.5,
                             fontSize: 16,
                           ),
                         ),
                       ],
                     ),
-                    height: MediaQuery.sizeOf(context).height*0.6,
+                    padding: EdgeInsets.all(10),
                     width: 300,
                     color: colorconstant.containerbox),
               ),

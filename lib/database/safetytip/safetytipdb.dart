@@ -260,7 +260,71 @@ class cutwoundatabase {
 }
 // 'Dislocated joints',
 
+class dislocatedatabase {
+  static List<Map<String, dynamic>> getdislocate() {
+    return [
 
+{
+'title': 'Dislocated Joints',
+  'subtitle1': '1. Do Not Try to Pop It Back In:',
+  'description1':
+      '• Do not attempt to relocate the joint yourself. Trying to pop the joint back into place without proper training can cause further damage.',
+  'subtitle2': '2. Call for Emergency Medical Help:',
+  'description2':
+      '• If you suspect a dislocated joint, call emergency services immediately. This is a medical emergency that requires professional intervention.',
+  'subtitle3': '3. Immobilize the Area:',
+  'description3':
+      '• Keep the affected joint as still as possible. Immobilize the injured limb by splinting it with a padded board, rolled-up magazines, or any other available materials.',
+  'subtitle4': '4. Support the Injured Limb:',
+  'description4':
+      '• Support the injured limb in the position in which you find it, using pillows or cushions if necessary.',
+      'image': "assets/allergi2.jpg",
+},
 
+    ];
+  }
+}
 
 // 'Drowning',
+class drowndatabase {
+  static List<Map<String, dynamic>> getdrown() {
+    return [
+
+{
+'title': 'Drowning',
+  'subtitle1': '1. Supervise Constantly:',
+  'description1':
+      '• Always supervise individuals, especially children, when they are in or around water. Avoid distractions like phones or reading.',
+  'subtitle2': '2. Learn to Swim:',
+  'description2':
+      '• Enroll yourself and your children in swimming lessons. Knowing how to swim is a crucial skill for water safety.',
+  'subtitle3': '3. Use Life Jackets:',
+  'description3':
+      '• When boating or participating in water activities, ensure that everyone wears appropriate and properly fitted life jackets.',
+  'subtitle4': '4. Secure Pools:',
+  'description4':
+      '• Install four-sided fencing around home pools with self-closing and self-latching gates. This can help prevent unsupervised access.',
+      'image': "assets/allergi2.jpg",
+},
+{
+'title': 'Response:',
+  'subtitle1': '1. Call for Help:',
+  'description1':
+      '• If someone is drowning, call emergency services immediately. Every second counts in a drowning situation.',
+  'subtitle2': '2. Reach or Throw, Don\'t Go:',
+  'description2':
+      '• If you are not a trained lifeguard, avoid entering the water to rescue someone. Instead, reach for them with an object like a pole or throw a buoyant aid, such as a lifebuoy.',
+  'subtitle3': '3. Bring the Person to Safety:',
+  'description3':
+      '• Once the person is out of the water, check for responsiveness. If they are not breathing, begin CPR immediately.',
+  'subtitle4': '4. Use Rescue Equipment:',
+  'description4':
+      '• If available, use life jackets, pool noodles, or other rescue equipment to aid in the rescue without putting yourself at risk.',
+      'image': "assets/allergi2.jpg",
+},
+
+    ];
+  }
+}
+
+

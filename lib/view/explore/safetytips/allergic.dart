@@ -19,7 +19,7 @@ class _allergyState extends State<allergy> {
         backgroundColor: Colors.red.shade700,
         title: Text(
           "Allergic Reactions",
-          style: TextStyle(color: Colors.white, fontSize: 25),
+          style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
       body: SingleChildScrollView(
