@@ -49,6 +49,9 @@ class _allergyState extends State<allergy> {
                               fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         // Text(data[index]['title']),
                         Text(
                           data[index]['description'],
@@ -59,7 +62,7 @@ class _allergyState extends State<allergy> {
                         )
                       ],
                     ),
-                    height: 120,
+                    height: MediaQuery.sizeOf(context).height * 0.2,
                     width: 300,
                     color: colorconstant.containerbox),
               ),
