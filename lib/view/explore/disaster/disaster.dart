@@ -15,11 +15,11 @@ class Disaster extends StatefulWidget {
 
 class _DisasterState extends State<Disaster> {
   List<String> Disasterlist = [
-    "Flood",
-    "Hailstorm",
-    "Landslide",
-    "Earthquake",
-    "Tsunami",
+    "🏊Flood",
+    "💨Hailstorm",
+    "⚠️Landslide",
+    "🌏Earthquake",
+    "🌊Tsunami",
   ];
 
   @override
@@ -48,12 +48,18 @@ class _DisasterState extends State<Disaster> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: colorconstant.containerbox),
-                  child: Center(
-                      child: Text(Disasterlist[index],
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(Disasterlist[index],
                           style: TextStyle(
                               color: Colors.grey.shade600,
                               fontSize: 16,
-                              fontWeight: FontWeight.bold))),
+                              fontWeight: FontWeight.bold)),
+                    ],
+                  ),
                 ),
               ),
             ),

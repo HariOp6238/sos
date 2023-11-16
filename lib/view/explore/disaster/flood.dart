@@ -25,7 +25,8 @@ class _floodState extends State<flood> {
             height: 250,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/3.jpg'), fit: BoxFit.fill)),
+                    image: AssetImage('assets/flood img.jpg'),
+                    fit: BoxFit.fill)),
           ),
           ListView.builder(
             physics: NeverScrollableScrollPhysics(),
@@ -36,7 +37,7 @@ class _floodState extends State<flood> {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 1,
-                  height: MediaQuery.sizeOf(context).height * 0.25,
+                  padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: colorconstant.containerbox,
                       borderRadius: BorderRadius.circular(15)),
@@ -46,6 +47,7 @@ class _floodState extends State<flood> {
                       Text(
                         data[index]['title'],
                         style: TextStyle(
+                            height: 1.5,
                             fontSize: 18,
                             color: Colors.red,
                             fontWeight: FontWeight.bold,
@@ -57,8 +59,11 @@ class _floodState extends State<flood> {
                       Text(
                         data[index]['subtitle'],
                         textAlign: TextAlign.justify,
-                        style:
-                            TextStyle(fontSize: 16, color: colorconstant.font),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: colorconstant.font,
+                          height: 1.5,
+                        ),
                       ),
                       SizedBox(
                         height: 10,
@@ -92,7 +97,10 @@ class _floodState extends State<flood> {
                   Text(
                     'Remember to adapt these precautions based on your specific location and the type of flooding that may occur in your area. Always follow the guidance of local authorities during a flood emergency.',
                     textAlign: TextAlign.justify,
-                    style: TextStyle(color: colorconstant.secondoryfont),
+                    style: TextStyle(
+                      color: colorconstant.secondoryfont,
+                      height: 1.5,
+                    ),
                   )
                 ],
               ),
