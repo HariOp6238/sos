@@ -21,10 +21,10 @@ class HomePageController {
   }
 
 // function for add data
-  static Future<void> addDatatoDb({required String name, }) async {
+  static Future<void> addDatatoDb({required String name,required int number }) async {
     await mydatabase.rawInsert(
         'INSERT INTO contact (name,number) VALUES (?,?)',
-        [name,"8765544456", ]);
+        [name,number, ]);
   }
 
 // function for get data
@@ -42,4 +42,11 @@ class HomePageController {
           );
     }).toList();
   }
+   static Future<void> delectdata({required String name,required int number }) async {
+    await mydatabase.rawDelete(
+        'INSERT INTO contact (name,number) VALUES (?,?)',
+        [name,number, ]);
+  }
 }
+//delect for the data
+

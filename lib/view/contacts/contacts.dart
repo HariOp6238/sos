@@ -1,8 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:material_dialogs/dialogs.dart';
-import 'package:material_dialogs/shared/types.dart';
+
 import 'package:sos/controller/contactclass.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 
@@ -17,8 +16,10 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
-  String phoneNumber = '8590207046';
+  
   HomePageController controllerObj = HomePageController();
+  
+  get selectedOption => null;
 
   @override
   void initState() {
@@ -34,16 +35,21 @@ class _ContactState extends State<Contact> {
   }
 
   final nameController = TextEditingController();
-
+  final numberController = TextEditingController();
+  final List<String> items = [
+  'Item1',
+  'Item2',
+  'Item3',
+  'Item4',
+];
+String? selectedValue;
+  
   @override
   Widget build(BuildContext context) {
-    List myGenaralcontactnumber = [
-      "100",
-      "101",
-    ];
-    List mypersonalcontatsname = ["mom", "dad", "friend"];
-    List mypersonalcontactnumber = ["9497654426", "9887638790", "8848253276"];
-
+    
+    List mypersonalcontatsname = ["police", "ambalance", "fireforce","National Emergency Number","Disaster Management Services"];
+    List mypersonalcontactnumber = ["100", "102", "101","112","108",];
+    int? number;
     return Scaffold(
       backgroundColor: Colors.red.shade700,
       appBar: AppBar(
@@ -54,72 +60,79 @@ class _ContactState extends State<Contact> {
         actions: [
           IconButton(
             icon: Icon(Icons.contact_emergency),
-              onPressed: () => showDialog(context: context, builder: (context) => AlertDialog(
+            onPressed: () => showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
                 title: Center(child: Text("ADD CONTACTS")),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
-                  
                 ),
                 scrollable: true,
                 content: Column(
                   children: [
-                    CircleAvatar(radius: 30,),
-                    SizedBox(height: 10,),
+                    CircleAvatar(
+                      
+                      child: Image.asset("assets/emergency_contact.jpg"),
+                      radius: 50,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     TextField(
-                            controller: nameController,
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                hintText: "enter the name"),
-                          ),
-                          SizedBox(height: 10,),
+                      controller: nameController,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          hintText: "enter the name"),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     TextField(
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                hintText: "enter the phone number"),
-                          ),
-                          Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text("personal"),
-                            Checkbox(
-                              value: false,
-                              onChanged: (value) => true,
-                            ),
-                            Text("general"),
-                            Checkbox(
-                              value: false,
-                              onChanged: (value) => true,
-                            ),
-                          ],
-                        ),
+                      controller: numberController,
+                      onChanged: (value) {
+                         
+                      },
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          hintText: "enter the phone number"),
+                    ),
+                    
                   ],
                 ),
                 actions: [
-                  
-                  OutlinedButton(onPressed: (){
-                    Navigator.pop(context);
-                  }, child: Text("cancel")),
-                  ElevatedButton(
-                            onPressed: () async {
-                              {
-                                  Navigator.pop(context);
-                                //funciton to add employee to database
-                                await HomePageController.addDatatoDb(
-                                    name: nameController.text);
+                  OutlinedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("cancel")),
+                  ElevatedButton(style: ButtonStyle(backgroundColor:MaterialStatePropertyAll(Colors.red[700])),
+                    
+                      onPressed: () async {
+                        {setState(() {
+                           number= int.parse(numberController.text);
+                        print(number);
+                        });
+                         
+                          Navigator.pop(context);
+                          //funciton to add employee to database
+                          await HomePageController.addDatatoDb(
+                              name: nameController.text,
+                              number:number!);
 
-                                // funciton to get data from data base after adding new data
-                                await controllerObj.getAllDataFromDb();
-                                setState(() {});
-                              }
-                              ;
-                            },
-                            child: Text("save"))
+                          // funciton to get data from data base after adding new data
+                          await controllerObj.getAllDataFromDb();
+                          setState(() {});
+                        }
+                        ;
+                      },
+                      child: Text("save"))
+                      
                 ],
-
-              ),),
-              )
+              ),
+            ),
+          )
         ],
         elevation: 0,
       ),
@@ -141,7 +154,7 @@ class _ContactState extends State<Contact> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(
-                          width: 40,
+                          width:30,
                         ),
                         Text(
                           (controllerObj.myModelList[index].name),
@@ -150,18 +163,26 @@ class _ContactState extends State<Contact> {
                               fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
-                          width: 100,
+                          width: 70,
                         ),
                         IconButton(
-                          onPressed: () => _makePhoneCall(
-                              phone: controllerObj.myModelList[index].name),
+                          onPressed: () {
+                            _makePhoneCall(
+                              phone: controllerObj.myModelList[index].number.toString());
+                              print(controllerObj.myModelList[index].name);
+                          },
+
                           icon: Icon(Icons.call, color: colorconstant.font),
+
                         ),
                         IconButton(
                             onPressed: () {
-                              _launchSMS();
+                              _launchSMS(phone:controllerObj.myModelList[index].number.toString());
                             },
-                            icon: Icon(Icons.message))
+                            icon: Icon(Icons.message)),
+                            IconButton(onPressed: (){}, icon:Icon(Icons.delete)),
+                            IconButton(onPressed: (){}, icon:Icon(Icons.edit)),
+
                       ],
                     ),
                     height: 70,
@@ -195,7 +216,7 @@ class _ContactState extends State<Contact> {
                               fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
-                          width: 200,
+                          width: 70,
                         ),
                         IconButton(
                           onPressed: () => _makePhoneCall(
@@ -204,7 +225,7 @@ class _ContactState extends State<Contact> {
                         ),
                         IconButton(
                             onPressed: () {
-                              _launchSMS();
+                              _launchSMS(phone:mypersonalcontactnumber[index] );
                             },
                             icon: Icon(Icons.message))
                       ],
@@ -218,8 +239,9 @@ class _ContactState extends State<Contact> {
           ),
         ],
         tabs: [
-          'General',
           'Personal',
+          'General',
+          
         ],
       ),
     );
@@ -236,8 +258,8 @@ class _ContactState extends State<Contact> {
     }
   }
 
-  _launchSMS() async {
-    //String phoneNumber = '8590207046';
+  _launchSMS({required String phone}) async {
+    String phoneNumber = 'tel:+${phone}';
     final String message =
         'Hello, this is a sample text message!'; // Replace with your desired message
 

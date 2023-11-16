@@ -46,6 +46,7 @@ dependencies:
   flutter_contacts: ^1.1.7+1
   material_dialogs: ^1.1.4
   sqflite: ^2.3.0
+  dropdown_button2: ^2.3.9
  
 
 dev_dependencies:
