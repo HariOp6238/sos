@@ -62,7 +62,7 @@ class _allergyState extends State<allergy> {
                         )
                       ],
                     ),
-                    height: MediaQuery.sizeOf(context).height * 0.2,
+                    height: MediaQuery.sizeOf(context).height * 0.25,
                     width: 300,
                     color: colorconstant.containerbox),
               ),
