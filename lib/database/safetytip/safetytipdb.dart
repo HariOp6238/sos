@@ -19,55 +19,54 @@ class SafetyDatabase {
         'title': '3.	Wear Medical Alert Identification:',
         'description':
             '•	Consider wearing a medical alert bracelet or necklace that indicates your specific allergies. This can be crucial information for emergency responders in case you are unable to communicate.',
-        'image': "assets/allergi1.jpg"
+        'image': "assets/allergi3.jpg"
       },
       {
         'title': '4.	Educate Others:',
         'description':
             '•	Ensure that family members, friends, colleagues, and caregivers are aware of your allergies and know how to respond in case of an emergency. Provide them with information on where you keep your medications.',
-        'image': "assets/allergi1.jpg"
+        'image': "assets/allergi4.jpg"
       },
       {
         'title': '5.	Read Labels:',
         'description':
             '•	Carefully read food labels and ingredient lists, especially if you have food allergies. Be aware of hidden allergens or cross-contamination risks.',
-        'image': "assets/allergi1.jpg"
+        'image': "assets/allergi5.jpg"
       },
       {
         'title': '6.	Communicate with Restaurants and Food Providers:',
         'description':
             '•	When dining out, inform restaurant staff about your allergies. Ask about ingredients and food preparation methods to avoid accidental exposure.',
-        'image': "assets/allergi1.jpg"
+        'image': "assets/allergi6.jpg"
       },
       {
         'title': '7.	Plan for Travel:',
         'description':
             '•	If youre traveling, carry your medications, including extra doses, and research medical facilities at your destination. Be prepared for potential language barriers by having translated information about your allergies.',
-        'image': "assets/allergi1.jpg"
+        'image': "assets/allergi7.jpg"
       },
       {
         'title': '8.	Allergy Testing:',
         'description':
             '•	Consider undergoing allergy testing to identify specific triggers. This information can help you and your healthcare provider develop a comprehensive management plan.',
-        'image': "assets/allergi1.jpg"
+        'image': "assets/allergi8.jpg"
       },
       {
         'title': '9.	Regular Check-ups:',
         'description':
             '•	Schedule regular follow-ups with your allergist or healthcare provider to monitor your allergies and update your management plan as needed.',
-        'image': "assets/allergi1.jpg"
+        'image': "assets/allergi9.jpg"
       },
       {
         'title': '10. Create an Emergency Action Plan:',
         'description':
             '•	Work with your healthcare provider to develop a personalized emergency action plan that outlines steps to take in case of an allergic reaction. Share this plan with those close to you.',
-        'image': "assets/allergi1.jpg"
+        'image': "assets/allergi11.jpg"
       },
       {
         'title': '11.	Stay Informed:',
         'description':
             '•	Stay informed about new developments in allergy management and treatment. Knowledge about potential allergens and available treatments can be empowering.',
-        'image': "assets/allergi1.jpg"
       },
     ];
   }

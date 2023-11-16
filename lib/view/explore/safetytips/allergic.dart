@@ -57,12 +57,13 @@ class _allergyState extends State<allergy> {
                           data[index]['description'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            height: 1.5,
                             fontSize: 16,
                           ),
                         )
                       ],
                     ),
-                    height: MediaQuery.sizeOf(context).height * 0.25,
+                    padding: EdgeInsets.all(10),
                     width: 300,
                     color: colorconstant.containerbox),
               ),
