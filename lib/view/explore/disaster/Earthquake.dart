@@ -73,7 +73,7 @@ class earthquake extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: Container(
               width: MediaQuery.sizeOf(context).width * 1,
-              height: MediaQuery.sizeOf(context).height * 0.2,
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                   color: colorconstant.containerbox,
                   borderRadius: BorderRadius.circular(15)),
