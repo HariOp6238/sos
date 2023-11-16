@@ -17,11 +17,10 @@ class _BurnState extends State<Burn> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red.shade700,
-        title: Center(
-            child: Text(
+        title: Text(
           "Burn",
-          style: TextStyle(color: Colors.white, fontSize: 25),
-        )),
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -63,6 +62,7 @@ class _BurnState extends State<Burn> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 16,
+                              height: 1.5,
                           ),
                         ),
                         Text(
@@ -78,6 +78,7 @@ class _BurnState extends State<Burn> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 16,
+                              height: 1.5,
                           ),
                         ),
                         Text(
@@ -93,6 +94,7 @@ class _BurnState extends State<Burn> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 16,
+                              height: 1.5,
                           ),
                         ),
                         Text(
@@ -100,7 +102,9 @@ class _BurnState extends State<Burn> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 18,
+                             
                             fontWeight: FontWeight.bold,
+
                           ),
                         ),
                         Text(
@@ -108,11 +112,12 @@ class _BurnState extends State<Burn> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 16,
+                            height: 1.5,
                           ),
                         ),
                       ],
                     ),
-                    height: MediaQuery.sizeOf(context).height*0.5,
+                   padding: EdgeInsets.all(10),
                     width: 300,
                     color: colorconstant.containerbox),
               ),

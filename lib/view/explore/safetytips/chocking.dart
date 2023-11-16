@@ -15,11 +15,10 @@ class _chockingState extends State<chocking> {
   Widget build(BuildContext context) {
     return  Scaffold( appBar: AppBar(
           backgroundColor: Colors.red.shade700,
-          title: Center(
-              child: Text(
+          title: Text(
             "Chocking",
-            style: TextStyle(color: Colors.white, fontSize: 25),
-          )),
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
         ),
     body: SingleChildScrollView(
         child: Column(
@@ -61,6 +60,7 @@ class _chockingState extends State<chocking> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 16,
+                              height: 1.5,
                           ),
                         ),
                         Text(
@@ -76,6 +76,7 @@ class _chockingState extends State<chocking> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 16,
+                              height: 1.5,
                           ),
                         ),
                         Text(
@@ -91,6 +92,7 @@ class _chockingState extends State<chocking> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 16,
+                              height: 1.5,
                           ),
                         ),
                         Text(
@@ -106,11 +108,12 @@ class _chockingState extends State<chocking> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 16,
+                              height: 1.5,
                           ),
                         ),
                       ],
                     ),
-                    height: MediaQuery.sizeOf(context).height*0.6,
+                  padding: EdgeInsets.all(10),
                     width: 300,
                     color: colorconstant.containerbox),
               ),
