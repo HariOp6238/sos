@@ -10,15 +10,23 @@ class allergy extends StatefulWidget {
 class _allergyState extends State<allergy> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold( appBar: AppBar(
-          backgroundColor: Colors.red.shade700,
-          title: Center(
-              child: Text(
-            "Allergic Reactions",
-    
-            style: TextStyle(color: Colors.white, fontSize: 25),
-          )),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red.shade700,
+        title: Center(
+          child: Column(
+            children: [
+              Text(
+                "Allergic Reactions",
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              
+              
+            ],
+          ),
         ),
+      ),
     );
   }
+
 }
