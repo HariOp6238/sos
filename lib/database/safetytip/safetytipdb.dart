@@ -60,7 +60,7 @@ class SafetyDatabase {
         'title': '10. Create an Emergency Action Plan:',
         'description':
             '•	Work with your healthcare provider to develop a personalized emergency action plan that outlines steps to take in case of an allergic reaction. Share this plan with those close to you.',
-        'image': "assets/allergi10.jpg"
+        'image': "assets/allergi11.jpg"
       },
       {
         'title': '11.	Stay Informed:',
