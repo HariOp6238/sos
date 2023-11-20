@@ -10,17 +10,18 @@ class Drowning extends StatefulWidget {
 }
 
 class _DrowningState extends State<Drowning> {
-   final List<Map<String, dynamic>> data = drowndatabase.getdrown();
+  final List<Map<String, dynamic>> data = drowndatabase.getdrown();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold( appBar: AppBar(
-          backgroundColor: Colors.red.shade700,
-          title: Text(
-            "Drowning",
-            style: TextStyle(color: Colors.white, fontSize: 18),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red.shade700,
+        title: Text(
+          "Drowning",
+          style: TextStyle(color: Colors.white, fontSize: 18),
         ),
-body: SingleChildScrollView(
+      ),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             ListView.separated(
@@ -51,6 +52,7 @@ body: SingleChildScrollView(
                           data[index]['subtitle1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -59,6 +61,7 @@ body: SingleChildScrollView(
                           data[index]['description1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
                             height: 1.5,
                           ),
@@ -67,6 +70,7 @@ body: SingleChildScrollView(
                           data[index]['subtitle2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -75,6 +79,7 @@ body: SingleChildScrollView(
                           data[index]['description2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             height: 1.5,
                             fontSize: 16,
                           ),

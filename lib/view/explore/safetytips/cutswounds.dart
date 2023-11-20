@@ -10,17 +10,18 @@ class cutswoods extends StatefulWidget {
 }
 
 class _cutswoodsState extends State<cutswoods> {
-   final List<Map<String, dynamic>> data = cutwoundatabase.getcutwound();
+  final List<Map<String, dynamic>> data = cutwoundatabase.getcutwound();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold( appBar: AppBar(
-          backgroundColor: Colors.red.shade700,
-          title: Text(
-            "Cuts and Woods",
-            style: TextStyle(color: Colors.white, fontSize: 18),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red.shade700,
+        title: Text(
+          "Cuts and Woods",
+          style: TextStyle(color: Colors.white, fontSize: 18),
         ),
-  body: SingleChildScrollView(
+      ),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             ListView.separated(
@@ -51,6 +52,7 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['subtitle1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -59,7 +61,8 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['description1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                             height: 1.5,
+                            color: Colors.black,
+                            height: 1.5,
                             fontSize: 16,
                           ),
                         ),
@@ -67,6 +70,7 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['subtitle2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -75,7 +79,8 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['description2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                             height: 1.5,
+                            color: Colors.black,
+                            height: 1.5,
                             fontSize: 16,
                           ),
                         ),
@@ -83,6 +88,7 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['subtitle3'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -91,7 +97,8 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['description3'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                             height: 1.5,
+                            color: Colors.black,
+                            height: 1.5,
                             fontSize: 16,
                           ),
                         ),
@@ -99,6 +106,7 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['subtitle4'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -107,6 +115,7 @@ class _cutswoodsState extends State<cutswoods> {
                           data[index]['description4'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             height: 1.5,
                             fontSize: 16,
                           ),
