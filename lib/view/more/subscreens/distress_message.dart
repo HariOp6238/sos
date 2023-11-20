@@ -50,7 +50,7 @@ class distressMessage extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "The distress call Mayday may be used only if the boat is threatened by grave	and	imminent danger, for example, sinking or on fire, and immediate assistance is required. This distress call has absolute priority over all other transmissions and may be transmitted only on the authority of the skipper or the person responsible	for the safety of your vessel.",
-                          style: TextStyle(
+                          style: TextStyle(color: Colors.black,
                               fontSize: 15, fontWeight: FontWeight.w500),
                           textAlign: TextAlign.justify,
                         ),
