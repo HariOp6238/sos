@@ -33,7 +33,6 @@ class _DisasterState extends State<Disaster> {
             style: TextStyle(fontSize: 18),
           ),
         ),
-        backgroundColor: colorconstant.myprimary,
         body: SafeArea(
           child: ListView.builder(
             scrollDirection: Axis.vertical,

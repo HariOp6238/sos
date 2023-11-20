@@ -53,6 +53,7 @@ dependencies:
   sqflite: ^2.3.0
   shared_preferences: ^2.2.2
   dropdown_button2: ^2.3.9
+  http: ^1.1.0
  
 
 dev_dependencies:
