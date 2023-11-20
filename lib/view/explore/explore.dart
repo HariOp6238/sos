@@ -30,7 +30,6 @@ class _ExploreState extends State<Explore> {
           style: TextStyle(fontSize: 25),
         ),
       ),
-      
       body: SafeArea(
           child: ListView.builder(
         scrollDirection: Axis.vertical,
