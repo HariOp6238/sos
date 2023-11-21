@@ -15,7 +15,7 @@ class HomePageController {
       version: 1,
       onCreate: (Database db, int version) {
         db.execute(
-            "CREATE TABLE contact(id INTEGER PRIMARY KEY, name TEXT, number INTEGER)");
+            "CREATE TABLE contact( name TEXT, number INTEGER)");
       },
     );
   }
@@ -36,16 +36,16 @@ class HomePageController {
 
     myModelList = dbdataList.map((element) {
       return MyModel(
-          id: element["id"],
+         
           name: element["name"],
           number: element["number"]
           );
     }).toList();
   }
-   static Future<void> delectdata({required String name,required int number }) async {
-    await mydatabase.rawDelete(
-        'INSERT INTO contact (name,number) VALUES (?,?)',
-        [name,number, ]);
+   static Future<void> delectdata({required id, }) async {
+    await mydatabase
+    .rawDelete('DELETE FROM contact WHERE id = ?', [id]);
+        
   }
 }
 //delect for the data
