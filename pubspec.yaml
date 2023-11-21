@@ -83,7 +83,7 @@ flutter:
   assets:
     - assets/ 
     - assets/animations/
-    - assets/audio/siren.mp3
+    - assets/audio/
     
 
      

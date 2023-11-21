@@ -94,12 +94,19 @@ class _RealState extends State<Real> {
                                     decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(10)),
-                                    child: Image.network(
-                                      Newapi?.articles?[index].urlToImage
-                                              .toString() ??
-                                          'https://st3.depositphotos.com/1322515/35964/v/600/depositphotos_359648638-stock-illustration-image-available-icon.jpg',
-                                      fit: BoxFit.fill,
-                                    )),
+                                    child: Newapi
+                                                ?.articles?[index].urlToImage ==
+                                            null
+                                        ? Image.network(
+                                            'https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg',
+                                            fit: BoxFit.fill,
+                                          )
+                                        : Image.network(
+                                            Newapi?.articles?[index].urlToImage
+                                                    .toString() ??
+                                                '',
+                                            fit: BoxFit.fill,
+                                          )),
                                 SizedBox(
                                   width: 10,
                                 ),
@@ -111,7 +118,7 @@ class _RealState extends State<Real> {
                                           color: Colors.grey.shade300,
                                           borderRadius:
                                               BorderRadius.circular(10)),
-                                      width: 200,
+                                      width: 190,
                                       padding: EdgeInsets.all(10),
                                       child: Expanded(
                                         child: Text(
@@ -132,7 +139,7 @@ class _RealState extends State<Real> {
                                       height: 5,
                                     ),
                                     Container(
-                                      width: 240,
+                                      width: 190,
                                       padding: EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                           color: Colors.grey.shade300,

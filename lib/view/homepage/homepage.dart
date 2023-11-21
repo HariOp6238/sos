@@ -20,17 +20,12 @@ AudioPlayer audioPlayer = AudioPlayer();
 class _HomepageState extends State<Homepage> {
   @override
   void initState() {
-    // loadAudio();
     _requestLocationPermission();
     _getcurrentlocation();
 
     setState(() {});
     super.initState();
   }
-
-  // void loadAudio() async {
-  //   await audioPlayer.setSourceAsset('assets/audio/siren.mp3');
-  // }
 
   bool isAnimating = false;
 
@@ -90,8 +85,6 @@ class _HomepageState extends State<Homepage> {
               ),
               GestureDetector(
                 onTap: () {
-                  // audioPlayer.play(AssetSource('assets/audio/siren.mp3'));
-
                   setState(() {
                     isAnimating = !isAnimating;
                   });
@@ -279,7 +272,7 @@ class _HomepageState extends State<Homepage> {
     );
   }
 
-//location permission
+  //location permission
   Future<void> _requestLocationPermission() async {
     final status = await Permission.location.request();
     if (status == PermissionStatus.granted) {
