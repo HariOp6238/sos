@@ -11,25 +11,20 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-final GlobalKey<FormState> _nameKey = GlobalKey<FormState>();
-final GlobalKey<FormState> _phoneKey = GlobalKey<FormState>();
-
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController phonecontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController namecontroller = TextEditingController();
-    TextEditingController phonecontroller = TextEditingController();
+    final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              if (!isKeyboard) SizedBox(),
               Center(
                 child: Lottie.asset('assets/animations/welcome.json',
                     repeat: false, height: 300, width: 300),
@@ -43,18 +38,12 @@ class _LoginPageState extends State<LoginPage> {
                 style:
                     TextStyle(fontSize: 15, color: colorconstant.secondoryfont),
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Form(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  key: _nameKey,
-                  validator: (value) {
-                    if (namecontroller.text.contains('@')) {
-                      return 'Name Required';
-                    } else {
-                      return null;
-                    }
+                  autofillHints: [AutofillHints.name],
+                  onTapOutside: (event) {
+                    FocusManager.instance.primaryFocus?.unfocus();
                   },
                   controller: namecontroller,
                   keyboardType: TextInputType.text,
@@ -69,16 +58,10 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 20,
               ),
-              Form(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  key: _phoneKey,
-                  validator: (value) {
-                    if (phonecontroller.text.contains('')) {
-                      return 'Phone Number Required';
-                    } else {
-                      return null;
-                    }
-                  },
+                  autofillHints: [AutofillHints.telephoneNumber],
                   controller: phonecontroller,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -93,21 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               GestureDetector(
-                onTap: () async {
-                  //**   shared pref is used to save the username to the key username **//
-
-                  final SharedPreferences preferences =
-                      await SharedPreferences.getInstance();
-                  preferences.setString('username', namecontroller.text);
-
-                  // if (_nameKey.currentState!.validate() &&
-                  //     _phoneKey.currentState!.validate()) {
-                  //   Navigator.pushReplacement(context,
-                  //       MaterialPageRoute(builder: (context) => IntroScreen()));
-                  // }
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => IntroScreen()));
-                },
+                onTap: _login,
                 child: Container(
                   width: 200,
                   height: 40,
@@ -126,6 +95,53 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  void _login() async {
+    // Get the values from the text controllers
+    String name = namecontroller.text;
+    String password = phonecontroller.text;
+
+    // Validate the fields
+    if (name.isEmpty ||
+        password.isEmpty ||
+        password.length < 10 ||
+        password.length > 10 ||
+        !RegExp('[0-9]').hasMatch(password)) {
+      _showValidationMessage("Username and PhoneNumber are required.");
+      return;
+    }
+
+    // Save the values to SharedPreferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('username', name);
+    prefs.setString('PhoneNumber', password);
+
+    // Navigate to the HomeScreen
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => IntroScreen()),
+    );
+  }
+
+  void _showValidationMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

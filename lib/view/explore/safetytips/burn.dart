@@ -53,6 +53,7 @@ class _BurnState extends State<Burn> {
                           data[index]['subtitle1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -61,14 +62,16 @@ class _BurnState extends State<Burn> {
                           data[index]['description1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                         Text(
                           data[index]['subtitle2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -77,14 +80,16 @@ class _BurnState extends State<Burn> {
                           data[index]['description2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                         Text(
                           data[index]['subtitle3'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -93,31 +98,32 @@ class _BurnState extends State<Burn> {
                           data[index]['description3'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                         Text(
                           data[index]['subtitle4'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
-                             
                             fontWeight: FontWeight.bold,
-
                           ),
                         ),
                         Text(
                           data[index]['description4'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
                             height: 1.5,
                           ),
                         ),
                       ],
                     ),
-                   padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(10),
                     width: 300,
                     color: colorconstant.containerbox),
               ),

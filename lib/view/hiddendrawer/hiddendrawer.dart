@@ -15,6 +15,21 @@ class Mydrawer extends StatefulWidget {
 }
 
 class _MydrawerState extends State<Mydrawer> {
+  String _username = "";
+
+  @override
+  void initState() {
+    super.initState();
+    loaddata();
+  }
+
+  void loaddata() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _username = prefs.getString('username') ?? 'No Username';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -40,8 +55,8 @@ class _MydrawerState extends State<Mydrawer> {
                       borderRadius: BorderRadius.circular(15)),
                   child: Center(
                     child: Text(
-                      'User',
-                      style: TextStyle(color: colorconstant.font),
+                      ' $_username',
+                      style: TextStyle(color: colorconstant.font, fontSize: 16),
                     ),
                   ),
                 )
