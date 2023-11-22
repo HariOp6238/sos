@@ -29,7 +29,7 @@ class _MoreState extends State<More> {
         centerTitle: true,
         title: Text(
           "More Options",
-          style: TextStyle(fontSize: 25),
+          style: TextStyle(fontSize: 20),
         ),
       ),
       body: SafeArea(
