@@ -46,11 +46,11 @@ class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
     List mypersonalcontatsname = [
-      "police",
-      "ambalance",
-      "fireforce",
-      "National Emergency Number",
-      "Disaster Management Services"
+      "Police",
+      "Ambalance",
+      "Fireforce",
+      "National Emergency ",
+      "Disaster Management "
     ];
     List mypersonalcontactnumber = [
       "100",
@@ -158,10 +158,10 @@ class _ContactState extends State<Contact> {
                       color: colorconstant.containerbox,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(
-                          width: 30,
+                          width: 5,
                         ),
                         Text(
                           (controllerObj.myModelList[index].name),
@@ -188,8 +188,13 @@ class _ContactState extends State<Contact> {
                                       .toString());
                             },
                             icon: Icon(Icons.message)),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                        IconButton(onPressed: () {
+                      HomePageController.delectdata(id:index);
+                      setState(() {
+                        fetchData();
+                      });
+                        }, icon: Icon(Icons.delete)),
+                        
                       ],
                     ),
                     height: 70,
@@ -213,18 +218,14 @@ class _ContactState extends State<Contact> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(
-                          width: 40,
-                        ),
+                        SizedBox(width: 20,),
                         Text(
                           mypersonalcontatsname[index],
                           style: TextStyle(
                               color: colorconstant.font,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
-                          width: 70,
-                        ),
+                       Spacer(),
                         IconButton(
                           onPressed: () => _makePhoneCall(
                               phone: mypersonalcontactnumber[index]),
@@ -234,7 +235,8 @@ class _ContactState extends State<Contact> {
                             onPressed: () {
                               _launchSMS(phone: mypersonalcontactnumber[index]);
                             },
-                            icon: Icon(Icons.message))
+                            icon: Icon(Icons.message)),
+                            SizedBox(width: 10,)
                       ],
                     ),
                     height: 70,
@@ -255,7 +257,7 @@ class _ContactState extends State<Contact> {
 
   _makePhoneCall({required String phone}) async {
     // The phone number you want to call
-    final String phoneNumber = 'tel:+${phone}';
+    final String phoneNumber = 'tel:${phone}';
 
     if (await canLaunch(phoneNumber)) {
       await launch(phoneNumber);
@@ -265,9 +267,9 @@ class _ContactState extends State<Contact> {
   }
 
   _launchSMS({required String phone}) async {
-    String phoneNumber = 'tel:+${phone}';
+    String phoneNumber = 'tel:${phone}';
     final String message =
-        'Hello, this is a sample text message!'; // Replace with your desired message
+        'An emergency situation is when a crime is actually happening, whether that is violence or threatened violence, or any form of danger to a life.'; // Replace with your desired message
 
     // Construct the SMS URL with the recipient's phone number and the message
 

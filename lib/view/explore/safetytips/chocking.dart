@@ -13,14 +13,15 @@ class _chockingState extends State<chocking> {
   final List<Map<String, dynamic>> data = chokedatabase.getchoke();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold( appBar: AppBar(
-          backgroundColor: Colors.red.shade700,
-          title: Text(
-            "Chocking",
-            style: TextStyle(color: Colors.white, fontSize: 18),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red.shade700,
+        title: Text(
+          "Chocking",
+          style: TextStyle(color: Colors.white, fontSize: 18),
         ),
-    body: SingleChildScrollView(
+      ),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             ListView.separated(
@@ -51,6 +52,7 @@ class _chockingState extends State<chocking> {
                           data[index]['subtitle1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -59,14 +61,16 @@ class _chockingState extends State<chocking> {
                           data[index]['description1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                         Text(
                           data[index]['subtitle2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -75,14 +79,16 @@ class _chockingState extends State<chocking> {
                           data[index]['description2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                         Text(
                           data[index]['subtitle3'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -91,14 +97,16 @@ class _chockingState extends State<chocking> {
                           data[index]['description3'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                         Text(
                           data[index]['subtitle4'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -107,13 +115,14 @@ class _chockingState extends State<chocking> {
                           data[index]['description4'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                       ],
                     ),
-                  padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(10),
                     width: 300,
                     color: colorconstant.containerbox),
               ),

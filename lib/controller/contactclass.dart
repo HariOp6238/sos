@@ -14,17 +14,19 @@ class HomePageController {
       "contact.db",
       version: 1,
       onCreate: (Database db, int version) {
-        db.execute(
-            "CREATE TABLE contact(id INTEGER PRIMARY KEY, name TEXT, number INTEGER)");
+        db.execute("CREATE TABLE contact( name TEXT, number INTEGER)");
       },
     );
   }
 
 // function for add data
-  static Future<void> addDatatoDb({required String name,required int number }) async {
-    await mydatabase.rawInsert(
-        'INSERT INTO contact (name,number) VALUES (?,?)',
-        [name,number, ]);
+  static Future<void> addDatatoDb(
+      {required String name, required int number}) async {
+    await mydatabase
+        .rawInsert('INSERT INTO contact (name,number) VALUES (?,?)', [
+      name,
+      number,
+    ]);
   }
 
 // function for get data
@@ -35,17 +37,14 @@ class HomePageController {
     //to convert data from db t model class
 
     myModelList = dbdataList.map((element) {
-      return MyModel(
-          id: element["id"],
-          name: element["name"],
-          number: element["number"]
-          );
+      return MyModel(name: element["name"], number: element["number"]);
     }).toList();
   }
-   static Future<void> delectdata({required String name,required int number }) async {
-    await mydatabase.rawDelete(
-        'INSERT INTO contact (name,number) VALUES (?,?)',
-        [name,number, ]);
+
+  static Future<void> delectdata({
+    required id,
+  }) async {
+    await mydatabase.rawDelete('DELETE FROM contact WHERE id = ?', [id]);
   }
 }
 //delect for the data

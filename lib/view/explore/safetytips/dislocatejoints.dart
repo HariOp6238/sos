@@ -52,6 +52,7 @@ class _DislocatedState extends State<Dislocated> {
                           data[index]['subtitle1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -60,31 +61,34 @@ class _DislocatedState extends State<Dislocated> {
                           data[index]['description1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                             height: 1.5,
+                            color: Colors.black,
+                            height: 1.5,
                             fontSize: 16,
                           ),
                         ),
-                         Text(
+                        Text(
                           data[index]['subtitle2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        
-                         Text(
+                        Text(
                           data[index]['description2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                         Text(
                           data[index]['subtitle3'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -93,14 +97,16 @@ class _DislocatedState extends State<Dislocated> {
                           data[index]['description3'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                         Text(
                           data[index]['subtitle4'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -109,8 +115,9 @@ class _DislocatedState extends State<Dislocated> {
                           data[index]['description4'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
+                            color: Colors.black,
                             fontSize: 16,
-                              height: 1.5,
+                            height: 1.5,
                           ),
                         ),
                       ],

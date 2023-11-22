@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sos/controller/themecontroller.dart';
@@ -15,6 +18,36 @@ class Mydrawer extends StatefulWidget {
 }
 
 class _MydrawerState extends State<Mydrawer> {
+  String _username = "";
+  File? _image;
+  final picker = ImagePicker();
+  late SharedPreferences _prefs;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadImageFromPrefs();
+    loaddata();
+  }
+
+  Future<void> _loadImageFromPrefs() async {
+    _prefs = await SharedPreferences.getInstance();
+    final String? imagePath = _prefs.getString('profile_image');
+
+    if (imagePath != null) {
+      setState(() {
+        _image = File(imagePath);
+      });
+    }
+  }
+
+  void loaddata() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _username = prefs.getString('username') ?? 'No Username';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -25,10 +58,15 @@ class _MydrawerState extends State<Mydrawer> {
             decoration: BoxDecoration(color: colorconstant.mybutton),
             child: Column(
               children: [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/men profile.jpg'),
-                  radius: 40,
-                ),
+                _image != null
+                    ? CircleAvatar(
+                        backgroundImage: FileImage(_image!),
+                        radius: 40,
+                      )
+                    : CircleAvatar(
+                        backgroundImage: AssetImage('assets/men profile.jpg'),
+                        radius: 40,
+                      ),
                 SizedBox(
                   height: 10,
                 ),
@@ -40,8 +78,8 @@ class _MydrawerState extends State<Mydrawer> {
                       borderRadius: BorderRadius.circular(15)),
                   child: Center(
                     child: Text(
-                      'User',
-                      style: TextStyle(color: colorconstant.font),
+                      ' $_username',
+                      style: TextStyle(color: colorconstant.font, fontSize: 16),
                     ),
                   ),
                 )

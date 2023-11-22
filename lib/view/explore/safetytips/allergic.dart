@@ -57,9 +57,7 @@ class _allergyState extends State<allergy> {
                           data[index]['description'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                            height: 1.5,
-                            fontSize: 16,
-                          ),
+                              height: 1.5, fontSize: 16, color: Colors.black),
                         )
                       ],
                     ),
