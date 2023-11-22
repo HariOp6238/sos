@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,14 +7,39 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sos/controller/themecontroller.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
+import 'package:sos/view/more/subscreens/profile.dart';
 
-class settings extends StatelessWidget {
+class settings extends StatefulWidget {
   const settings({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<settings> createState() => _settingsState();
+}
 
-  // logout permission
+class _settingsState extends State<settings> {
+  File? _image;
+  late SharedPreferences _prefs;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadImageFromPrefs();
+  }
+
+  Future<void> _loadImageFromPrefs() async {
+    _prefs = await SharedPreferences.getInstance();
+    final String? imagePath = _prefs.getString('profile_image');
+
+    if (imagePath != null) {
+      setState(() {
+        _image = File(imagePath);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // logout permission
     Future<void> _showMyDialog() async {
       return showDialog<void>(
         context: context,
@@ -71,26 +98,40 @@ class settings extends StatelessWidget {
           Center(
             child: Padding(
               padding: const EdgeInsets.only(top: 40),
-              child: CircleAvatar(
-                radius: 70,
-                backgroundImage: AssetImage('assets/men profile.jpg'),
-              ),
+              child: _image != null
+                  ? CircleAvatar(
+                      radius: 70,
+                      backgroundImage: FileImage(_image!),
+                    )
+                  : CircleAvatar(
+                      radius: 70,
+                      backgroundImage: AssetImage('assets/men profile.jpg'),
+                    ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: Container(
-              width: 250,
-              height: 50,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: colorconstant.containerbox),
-              child: Center(
-                child: Text("Edit Profile",
-                    style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => profilePage(),
+                    ));
+              },
+              child: Container(
+                width: 250,
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: colorconstant.containerbox),
+                child: Center(
+                  child: Text("Edit Profile",
+                      style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold)),
+                ),
               ),
             ),
           ),
@@ -105,7 +146,10 @@ class settings extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.light_mode,color: colorconstant.font,),
+                leading: Icon(
+                  Icons.light_mode,
+                  color: colorconstant.font,
+                ),
                 title: Text("Theme",
                     style: TextStyle(
                         color: Colors.grey.shade600,
@@ -125,49 +169,52 @@ class settings extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.location_on,color: colorconstant.font),
+                leading: Icon(Icons.location_on, color: colorconstant.font),
                 title: Text("Location",
                     style: TextStyle(
                         color: Colors.grey.shade600,
                         fontSize: 16,
                         fontWeight: FontWeight.bold)),
-                        trailing: CupertinoSwitch(
-                          activeColor: Colors.black,
-                          trackColor: Colors.white,
-                          value: false, onChanged: (value) {
-                        },),
+                trailing: CupertinoSwitch(
+                  activeColor: Colors.black,
+                  trackColor: Colors.white,
+                  value: false,
+                  onChanged: (value) {},
+                ),
               )),
-              Padding(
+          Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.call ,color: colorconstant.font),
+                leading: Icon(Icons.call, color: colorconstant.font),
                 title: Text("Calls",
                     style: TextStyle(
                         color: Colors.grey.shade600,
                         fontSize: 16,
                         fontWeight: FontWeight.bold)),
-                        trailing: CupertinoSwitch(
-                          activeColor: Colors.black,
-                          trackColor: Colors.white,
-                          value: false, onChanged: (value) {
-                        },),
+                trailing: CupertinoSwitch(
+                  activeColor: Colors.black,
+                  trackColor: Colors.white,
+                  value: false,
+                  onChanged: (value) {},
+                ),
               )),
-              Padding(
+          Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.message,color: colorconstant.font),
+                leading: Icon(Icons.message, color: colorconstant.font),
                 title: Text("Messages",
                     style: TextStyle(
                         color: Colors.grey.shade600,
                         fontSize: 16,
                         fontWeight: FontWeight.bold)),
-                        trailing: CupertinoSwitch(
-                          activeColor: Colors.black,
-                          trackColor: Colors.white,
-                          value: false, onChanged: (value) {
-                        },),
+                trailing: CupertinoSwitch(
+                  activeColor: Colors.black,
+                  trackColor: Colors.white,
+                  value: false,
+                  onChanged: (value) {},
+                ),
               )),
           Padding(
               padding: const EdgeInsets.all(8.0),
