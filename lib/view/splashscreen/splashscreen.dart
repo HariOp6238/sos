@@ -51,7 +51,10 @@ class _SplashscreenState extends State<Splashscreen> {
         children: [
           Center(
             child: Container(
-              child: Image.asset("assets/logo.png"),
+              child: Image.asset(
+                "assets/logo.png",
+                color: Colors.red,
+              ),
               height: 120,
               width: 120,
             ),
