@@ -90,7 +90,7 @@ class burndatabase {
         'subtitle4': '4.	Protect the Burn:',
         'description4':
             '•	Cover the burn with a sterile non-stick bandage or a clean cloth.',
-        'image': "assets/allergi2.jpg",
+        'image': "assets/first_degree.webp",
       },
       {
         'title': 'For Moderate Burns (Second-Degree):',
@@ -105,7 +105,7 @@ class burndatabase {
             '•	Do not use ice directly on the burn, as it can damage the tissue.',
         'subtitle4': ' 4.	Do Not Use Ice:',
         'description4': '•	Do not use ice or very cold water on severe burns.',
-        'image': "assets/allergi2.jpg",
+        'image': "assets/second_degree.webp",
       },
       {
         'title': 'For Severe Burns (Third-Degree):',
@@ -121,7 +121,7 @@ class burndatabase {
         'subtitle4': '4.	Cover the Burn:',
         'description4':
             '•	Cover the burn with a cool, moist sterile bandage or clean cloth. Avoid using adhesive bandages directly on the burn.',
-        'image': "assets/allergi2.jpg",
+        'image': "assets/third_degree.jpg",
       },
       {
         'title': 'General Safety Tips:',
@@ -137,7 +137,7 @@ class burndatabase {
         'subtitle4': '4. Do Not Use Water on Grease Fires:',
         'description4':
             '• For kitchen fires involving grease, do not use water. Use a fire extinguisher or cover the flames with a metal lid.',
-        'image': "assets/allergi2.jpg",
+        
       },
     ];
   }
@@ -180,7 +180,7 @@ class chokedatabase {
         'subtitle4': '4. Supervise Meals:',
         'description4':
             '• Supervise young children during meals and ensure they are seated while eating. Encourage them to chew their food thoroughly.',
-        'image': "assets/allergi2.jpg",
+        'image': "assets/infants.jpg",
       },
       {
         'title': 'General Safety Tips:',
