@@ -72,9 +72,9 @@ class IntroScreenState extends State<IntroScreen> {
                     'assets/2.png',
                     fit: BoxFit.cover,
                   ))),
-          title: "Full Screen Page",
+          title: "Welcome to Rapid Responce!",
           body:
-              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+              " Your ultimate companion for staying safe and prepared in any situation,Your safety is our priority",
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -94,9 +94,9 @@ class IntroScreenState extends State<IntroScreen> {
                     'assets/8.jpg',
                     fit: BoxFit.cover,
                   ))),
-          title: "Full Screen Page",
+          title: "SOS Button !",
           body:
-              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+              "There is a SOS button for emergencies.After pressing that butoon an alert call or message will be sent",
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -117,9 +117,9 @@ class IntroScreenState extends State<IntroScreen> {
                     'assets/7.jpg',
                     fit: BoxFit.cover,
                   ))),
-          title: "Full Screen Page",
+          title: "Personalized  Emergency Contacts !",
           body:
-              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+              "There are 2 categories in contact Genaral and Personal. We can add the desired contacts in personal and\nIn general you can see the emergency contacts like Polica,Fire Force,Disaster Management",
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -140,9 +140,9 @@ class IntroScreenState extends State<IntroScreen> {
                     'assets/3.jpg',
                     fit: BoxFit.cover,
                   ))),
-          title: "Full Screen Page",
+          title: "Emergency Support At Your Fingertip !",
           body:
-              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+              " Find crucial information to handle variuos kinds of emergencies at all time",
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -163,9 +163,9 @@ class IntroScreenState extends State<IntroScreen> {
                     'assets/4.jpg',
                     fit: BoxFit.cover,
                   ))),
-          title: "Full Screen Page",
+          title: "Real Time News",
           body:
-              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+              "We bring recent natural disasters news and update special reports to all users",
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
