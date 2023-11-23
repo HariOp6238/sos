@@ -29,7 +29,7 @@ class _MoreState extends State<More> {
         centerTitle: true,
         title: Text(
           "More Options",
-          style: TextStyle(fontSize: 25),
+          style: TextStyle(fontSize: 20),
         ),
       ),
       body: SafeArea(
@@ -80,7 +80,7 @@ void navigateToPage(BuildContext context, int pageindex) {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => helpDesk(),
+            builder: (context) => ExpansionPanelListExample(),
           ));
       break;
     case 3:

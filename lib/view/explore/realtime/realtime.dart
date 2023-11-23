@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'package:sos/model/newsmodels.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
@@ -53,102 +54,118 @@ class _RealState extends State<Real> {
       appBar: AppBar(
         backgroundColor: Colors.red.shade700,
         title: Text(
-          "Real time News",
+          "Real Time News",
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // for better visualization shimmer is used
-          _isloading
-              ? Expanded(
-                  child: ListView.separated(
-                      itemBuilder: (context, index) => newscardskeleton(),
-                      separatorBuilder: (context, index) => SizedBox(
-                            height: 16,
-                          ),
-                      itemCount: 6))
-              : Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    itemCount: Newapi?.articles?.length,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                          padding: EdgeInsets.only(top: 10, bottom: 10),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: colorconstant.containerbox),
-                          child: Row(
-                            children: [
-                              Container(
-                                  width: 100,
-                                  height: 150,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Image.network(
-                                    Newapi?.articles?[index].urlToImage
-                                            .toString() ??
-                                        'https://st3.depositphotos.com/1322515/35964/v/600/depositphotos_359648638-stock-illustration-image-available-icon.jpg',
-                                    fit: BoxFit.fill,
-                                  )),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // for better visualization shimmer is used
+            _isloading
+                ? Expanded(
+                    child: ListView.separated(
+                        itemBuilder: (context, index) => Shimmer.fromColors(
+                            baseColor: Colors.grey[400]!,
+                            highlightColor: Colors.grey[300]!,
+                            child: newscardskeleton()),
+                        separatorBuilder: (context, index) => SizedBox(
+                              height: 16,
+                            ),
+                        itemCount: 7))
+                : Expanded(
+                    child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: Newapi?.articles?.length,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: colorconstant.containerbox),
+                            child: Row(
+                              children: [
+                                Container(
+                                    width: 100,
+                                    height: 150,
                                     decoration: BoxDecoration(
-                                        color: Colors.grey.shade300,
                                         borderRadius:
                                             BorderRadius.circular(10)),
-                                    width: 200,
-                                    padding: EdgeInsets.all(10),
-                                    child: Center(
-                                      child: Text(
-                                        Newapi?.articles?[index].title
-                                                .toString() ??
-                                            '',
-                                        maxLines: 1,
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17,
-                                            color: colorconstant.mybutton),
+                                    child: Newapi
+                                                ?.articles?[index].urlToImage ==
+                                            null
+                                        ? Image.network(
+                                            'https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg',
+                                            fit: BoxFit.fill,
+                                          )
+                                        : Image.network(
+                                            Newapi?.articles?[index].urlToImage
+                                                    .toString() ??
+                                                '',
+                                            fit: BoxFit.fill,
+                                          )),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.grey.shade300,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      width: 190,
+                                      padding: EdgeInsets.all(10),
+                                      child: Expanded(
+                                        child: Text(
+                                          Newapi?.articles?[index].title
+                                                  .toString() ??
+                                              '',
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 17,
+                                              color: colorconstant.mybutton),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    width: 220,
-                                    padding: EdgeInsets.all(2),
-                                    decoration: BoxDecoration(
-                                        color: Colors.grey.shade300,
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Text(
-                                      Newapi?.articles?[index].description
-                                              .toString() ??
-                                          '',
-                                      maxLines: 5,
-                                      style: TextStyle(
-                                          height: 1.5,
-                                          color: colorconstant.font),
-                                      textAlign: TextAlign.justify,
+                                    SizedBox(
+                                      height: 5,
                                     ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          )),
+                                    Container(
+                                      width: 190,
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          color: Colors.grey.shade300,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Text(
+                                        Newapi?.articles?[index].description
+                                                .toString() ??
+                                            '',
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 5,
+                                        style: TextStyle(
+                                            height: 1.5,
+                                            color: colorconstant.font),
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            )),
+                      ),
                     ),
                   ),
-                ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -164,7 +181,7 @@ class newscardskeleton extends StatelessWidget {
     return Row(
       children: [
         skeleton(
-          height: 120,
+          height: 100,
           width: 120,
         ),
         SizedBox(
@@ -183,7 +200,7 @@ class newscardskeleton extends StatelessWidget {
             ),
             skeleton(
               width: 200,
-              height: 60,
+              height: 40,
             )
           ],
         ))
@@ -202,8 +219,7 @@ class skeleton extends StatelessWidget {
       width: width,
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(16)),
+          color: Colors.grey, borderRadius: BorderRadius.circular(16)),
     );
   }
 }

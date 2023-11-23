@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/explore/disaster/disaster.dart';
-import 'package:sos/view/explore/health/health.dart';
 import 'package:sos/view/explore/realtime/realtime.dart';
 import 'package:sos/view/explore/safetytips/safetytips.dart';
 
@@ -16,7 +15,6 @@ class _ExploreState extends State<Explore> {
   List<String> optionslist = [
     "Safety Tips",
     "Disaster preparednes",
-    "Health centers around me",
     "Real time incidents",
   ];
   @override
@@ -27,7 +25,7 @@ class _ExploreState extends State<Explore> {
         centerTitle: true,
         title: Text(
           "Explore",
-          style: TextStyle(fontSize: 25),
+          style: TextStyle(fontSize: 20),
         ),
       ),
       body: SafeArea(
@@ -74,14 +72,8 @@ void navigate(BuildContext context, int pageindex) {
             builder: (context) => Disaster(),
           ));
       break;
+
     case 2:
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Health(),
-          ));
-      break;
-    case 3:
       Navigator.push(
           context,
           MaterialPageRoute(

@@ -1,8 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:sos/model/model.dart';
 
-import 'package:sos/controller/contactclass.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 
 import 'package:tab_container/tab_container.dart';
@@ -16,22 +17,7 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
-  HomePageController controllerObj = HomePageController();
-
   get selectedOption => null;
-
-  @override
-  void initState() {
-    //for fetching initial data
-    fetchData();
-    super.initState();
-  }
-
-  fetchData() async {
-    //get all data form datbase
-    await controllerObj.getAllDataFromDb();
-    setState(() {});
-  }
 
   final nameController = TextEditingController();
   final numberController = TextEditingController();
@@ -42,15 +28,23 @@ class _ContactState extends State<Contact> {
     'Item4',
   ];
   String? selectedValue;
+  // List<contactmodel> get contacts => box.values.toList();
+  var box = Hive.box<contactmodel>('contact');
+
+  @override
+  void initState() {
+    // print(contacts[1].Phonenumber);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     List mypersonalcontatsname = [
-      "police",
-      "ambalance",
-      "fireforce",
-      "National Emergency Number",
-      "Disaster Management Services"
+      "Police",
+      "Ambalance",
+      "Fireforce",
+      "National Emergency ",
+      "Disaster Management "
     ];
     List mypersonalcontactnumber = [
       "100",
@@ -59,12 +53,14 @@ class _ContactState extends State<Contact> {
       "112",
       "108",
     ];
-    int? number;
+
     return Scaffold(
       backgroundColor: Colors.red.shade700,
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           "Emergency Contacts",
+          style: TextStyle(fontSize: 20),
         ),
         backgroundColor: Colors.red.shade700,
         actions: [
@@ -113,25 +109,24 @@ class _ContactState extends State<Contact> {
                         Navigator.pop(context);
                       },
                       child: Text("cancel")),
+
+                  // save button
                   ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStatePropertyAll(Colors.red[700])),
                       onPressed: () async {
                         {
-                          setState(() {
-                            number = int.parse(numberController.text);
-                            print(number);
-                          });
+                          final newContact = contactmodel(
+                              nameController.text, numberController.text);
+                          final contactBox = Hive.box<contactmodel>('contact');
+                          await contactBox.add(newContact);
+                          setState(() {});
 
                           Navigator.pop(context);
                           //funciton to add employee to database
-                          await HomePageController.addDatatoDb(
-                              name: nameController.text, number: number!);
 
                           // funciton to get data from data base after adding new data
-                          await controllerObj.getAllDataFromDb();
-                          setState(() {});
                         }
                         ;
                       },
@@ -147,59 +142,82 @@ class _ContactState extends State<Contact> {
         color: colorconstant.myprimary,
         children: [
           Container(
+            //****************personal contact tab********************//
             child: Expanded(
-              child: ListView.builder(
-                itemCount: controllerObj.myModelList.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(top: 8, bottom: 8),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: colorconstant.containerbox,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SizedBox(
-                          width: 30,
-                        ),
-                        Text(
-                          (controllerObj.myModelList[index].name),
-                          style: TextStyle(
-                              color: colorconstant.font,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          width: 70,
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            _makePhoneCall(
-                                phone: controllerObj.myModelList[index].number
-                                    .toString());
-                            print(controllerObj.myModelList[index].name);
-                          },
-                          icon: Icon(Icons.call, color: colorconstant.font),
-                        ),
-                        IconButton(
-                            onPressed: () {
-                              _launchSMS(
-                                  phone: controllerObj.myModelList[index].number
-                                      .toString());
-                            },
-                            icon: Icon(Icons.message)),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
-                      ],
-                    ),
-                    height: 70,
-                    width: double.infinity,
-                  ),
-                ),
+              child: FutureBuilder(
+                future: Hive.openBox<contactmodel>('contact'),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    final contactbox = Hive.box<contactmodel>('contact');
+                    return ListView.builder(
+                      itemCount: contactbox.length,
+                      itemBuilder: (context, index) {
+                        final contact = contactbox.getAt(index) as contactmodel;
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: colorconstant.containerbox,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text(
+                                  (contact.name),
+                                  style: TextStyle(
+                                      color: colorconstant.font,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Spacer(),
+                                IconButton(
+                                  onPressed: () {
+                                    _makePhoneCall(
+                                        phone: contact.Phonenumber.toString());
+                                  },
+                                  icon: Icon(Icons.call,
+                                      color: colorconstant.font),
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      _launchSMS(
+                                          phone:
+                                              contact.Phonenumber.toString());
+                                    },
+                                    icon: Icon(
+                                      Icons.message,
+                                      color: colorconstant.font,
+                                    )),
+                                IconButton(
+                                    onPressed: () {
+                                      _deleteContact(index);
+                                    },
+                                    icon: Icon(
+                                      Icons.delete,
+                                      color: colorconstant.font,
+                                    )),
+                              ],
+                            ),
+                            height: 70,
+                            width: double.infinity,
+                          ),
+                        );
+                      },
+                    );
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
               ),
             ),
           ),
           Container(
+            //****************general contact tab********************//
             child: Expanded(
               child: ListView.builder(
                 itemCount: mypersonalcontatsname.length,
@@ -214,7 +232,7 @@ class _ContactState extends State<Contact> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SizedBox(
-                          width: 40,
+                          width: 20,
                         ),
                         Text(
                           mypersonalcontatsname[index],
@@ -222,9 +240,7 @@ class _ContactState extends State<Contact> {
                               color: colorconstant.font,
                               fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
-                          width: 70,
-                        ),
+                        Spacer(),
                         IconButton(
                           onPressed: () => _makePhoneCall(
                               phone: mypersonalcontactnumber[index]),
@@ -234,7 +250,13 @@ class _ContactState extends State<Contact> {
                             onPressed: () {
                               _launchSMS(phone: mypersonalcontactnumber[index]);
                             },
-                            icon: Icon(Icons.message))
+                            icon: Icon(
+                              Icons.message,
+                              color: colorconstant.font,
+                            )),
+                        SizedBox(
+                          width: 10,
+                        )
                       ],
                     ),
                     height: 70,
@@ -255,7 +277,7 @@ class _ContactState extends State<Contact> {
 
   _makePhoneCall({required String phone}) async {
     // The phone number you want to call
-    final String phoneNumber = 'tel:+${phone}';
+    final String phoneNumber = 'tel:${phone}';
 
     if (await canLaunch(phoneNumber)) {
       await launch(phoneNumber);
@@ -265,9 +287,9 @@ class _ContactState extends State<Contact> {
   }
 
   _launchSMS({required String phone}) async {
-    String phoneNumber = 'tel:+${phone}';
+    String phoneNumber = 'tel:${phone}';
     final String message =
-        'Hello, this is a sample text message!'; // Replace with your desired message
+        'An emergency situation is when a crime is actually happening, whether that is violence or threatened violence, or any form of danger to a life.'; // Replace with your desired message
 
     // Construct the SMS URL with the recipient's phone number and the message
 
@@ -281,5 +303,12 @@ class _ContactState extends State<Contact> {
       // Handle error
       print('Could not launch SMS');
     }
+  }
+
+  void _deleteContact(int index) {
+    final contactsBox = Hive.box<contactmodel>('contact');
+    contactsBox.deleteAt(index);
+
+    setState(() {});
   }
 }

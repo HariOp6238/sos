@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/contacts/contacts.dart';
@@ -31,6 +32,8 @@ class _BottombarState extends State<Bottombar> {
       _selectedIndex = index;
     });
   }
+
+  final player = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +92,7 @@ class _BottombarState extends State<Bottombar> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {});
+          player.play(AssetSource('assets/audio/siren.mp3'));
         },
         child: Text(
           'SoS',
