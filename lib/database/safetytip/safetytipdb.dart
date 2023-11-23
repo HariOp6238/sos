@@ -163,7 +163,7 @@ class chokedatabase {
         'subtitle4': '4. Call for Help:',
         'description4':
             '• If the person cannot breathe, cough, or speak, call emergency services immediately.',
-        'image': "assets/allergi2.jpg",
+        'image': "assets/adult.png",
       },
       {
         'title': 'For Infants:',
@@ -196,7 +196,7 @@ class chokedatabase {
         'subtitle4': '4. Avoid Distractions:',
         'description4':
             '• Encourage people to focus on eating and avoid distractions like watching TV or playing while eating.',
-        'image': "assets/allergi2.jpg",
+        
       },
     ];
   }
@@ -221,7 +221,7 @@ class cutwoundatabase {
         'subtitle4': '4. Apply an Antibiotic Ointment:',
         'description4':
             '• After cleaning, apply a thin layer of antibiotic ointment to promote healing and prevent infection.',
-        'image': "assets/allergi2.jpg",
+        'image': "assets/cutswounds.jpg",
       },
       {
         'title': 'For Deep or Serious Wounds:',
@@ -237,7 +237,7 @@ class cutwoundatabase {
         'subtitle4': '4. Clean Around the Wound:',
         'description4':
             '• Clean the area around the wound with mild soap and water if possible, without disturbing the wound itself.',
-        'image': "assets/allergi2.jpg",
+        'image': "assets/deepwounds.jpg",
       },
       {
         'title': 'General Safety Tips:',
@@ -253,7 +253,7 @@ class cutwoundatabase {
         'subtitle4': '4. Teach First Aid:',
         'description4':
             '• Encourage individuals to learn basic first aid, including how to clean and dress wounds.',
-        'image': "assets/allergi2.jpg",
+       
       }
     ];
   }
@@ -277,7 +277,7 @@ class dislocatedatabase {
         'subtitle4': '4. Support the Injured Limb:',
         'description4':
             '• Support the injured limb in the position in which you find it, using pillows or cushions if necessary.',
-        'image': "assets/allergi2.jpg",
+        'image': "assets/dislocated joints.jpg",
       },
     ];
   }
@@ -301,7 +301,7 @@ class drowndatabase {
         'subtitle4': '4. Secure Pools:',
         'description4':
             '• Install four-sided fencing around home pools with self-closing and self-latching gates. This can help prevent unsupervised access.',
-        'image': "assets/allergi2.jpg",
+        'image': "assets/drowning.jpg",
       },
       {
         'title': 'Response:',
@@ -317,7 +317,7 @@ class drowndatabase {
         'subtitle4': '4. Use Rescue Equipment:',
         'description4':
             '• If available, use life jackets, pool noodles, or other rescue equipment to aid in the rescue without putting yourself at risk.',
-        'image': "assets/allergi2.jpg",
+        
       },
     ];
   }
