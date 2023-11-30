@@ -1,7 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -9,6 +12,8 @@ import 'package:lottie/lottie.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sos/model/model.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
+import 'package:sos/view/explore/explore.dart';
+import 'package:sos/view/explore/safetytips/safetytips.dart';
 import 'package:sos/view/hiddendrawer/hiddendrawer.dart';
 import 'package:sos/view/notification/noti.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -23,6 +28,14 @@ class Homepage extends StatefulWidget {
 AudioPlayer audioPlayer = AudioPlayer();
 
 class _HomepageState extends State<Homepage> {
+  _makePhoneCall(String phoneNumber) async {
+    if (await canLaunch(phoneNumber)) {
+      await launch(phoneNumber);
+    } else {
+      throw 'Could not launch $phoneNumber';
+    }
+  }
+
   @override
   void initState() {
     _requestLocationPermission();
@@ -162,33 +175,47 @@ class _HomepageState extends State<Homepage> {
                       SizedBox(
                         width: 10,
                       ),
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: 50,
-                          color: colorconstant.containerbox,
-                          child: Center(
-                              child: Text(
-                            'Fire...🔥',
-                            style: TextStyle(
-                                color: colorconstant.secondoryfont,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ))),
+                      GestureDetector(
+                        onTap: () {
+                          _makePhoneCall('tel:101');
+                        },
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            height: 50,
+                            color: colorconstant.containerbox,
+                            child: Center(
+                                child: Text(
+                              'Fire...🔥',
+                              style: TextStyle(
+                                  color: colorconstant.secondoryfont,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ))),
+                      ),
                       SizedBox(
                         width: 10,
                       ),
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          height: 50,
-                          color: colorconstant.containerbox,
-                          child: Center(
-                              child: Text(
-                            'Medical...🏥',
-                            style: TextStyle(
-                                color: colorconstant.secondoryfont,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          )))
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Safety(),
+                              ));
+                        },
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            height: 50,
+                            color: colorconstant.containerbox,
+                            child: Center(
+                                child: Text(
+                              'Safety Tips🦺',
+                              style: TextStyle(
+                                  color: colorconstant.secondoryfont,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ))),
+                      )
                     ],
                   ),
                   //  second line emergency column
@@ -200,33 +227,43 @@ class _HomepageState extends State<Homepage> {
                       SizedBox(
                         width: 30,
                       ),
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          height: 50,
-                          color: colorconstant.containerbox,
-                          child: Center(
-                              child: Text(
-                            'Police...👮',
-                            style: TextStyle(
-                                color: colorconstant.secondoryfont,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ))),
+                      GestureDetector(
+                        onTap: () {
+                          _makePhoneCall("tel:100");
+                        },
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            height: 50,
+                            color: colorconstant.containerbox,
+                            child: Center(
+                                child: Text(
+                              'Police...👮',
+                              style: TextStyle(
+                                  color: colorconstant.secondoryfont,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ))),
+                      ),
                       SizedBox(
                         width: 10,
                       ),
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          height: 50,
-                          color: colorconstant.containerbox,
-                          child: Center(
-                              child: Text(
-                            'Ambulance...🚑',
-                            style: TextStyle(
-                                color: colorconstant.secondoryfont,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          )))
+                      GestureDetector(
+                        onTap: () {
+                          _makePhoneCall("tel:102");
+                        },
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            height: 50,
+                            color: colorconstant.containerbox,
+                            child: Center(
+                                child: Text(
+                              'Ambulance...🚑',
+                              style: TextStyle(
+                                  color: colorconstant.secondoryfont,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ))),
+                      )
                     ],
                   ),
                   // third line emergency coloumn
@@ -238,33 +275,43 @@ class _HomepageState extends State<Homepage> {
                       SizedBox(
                         width: 20,
                       ),
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          height: 50,
-                          color: colorconstant.containerbox,
-                          child: Center(
-                              child: Text(
-                            'Rescue...🚨',
-                            style: TextStyle(
-                                color: colorconstant.secondoryfont,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ))),
+                      GestureDetector(
+                        onTap: () {
+                          _makePhoneCall("tel:112");
+                        },
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            height: 50,
+                            color: colorconstant.containerbox,
+                            child: Center(
+                                child: Text(
+                              'Rescue...🚨',
+                              style: TextStyle(
+                                  color: colorconstant.secondoryfont,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ))),
+                      ),
                       SizedBox(
                         width: 10,
                       ),
-                      Container(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: 50,
-                          color: colorconstant.containerbox,
-                          child: Center(
-                              child: Text(
-                            'Earthquake...🌏',
-                            style: TextStyle(
-                                color: colorconstant.secondoryfont,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          )))
+                      GestureDetector(
+                        onTap: () {
+                          _makePhoneCall("tel:04711070");
+                        },
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            height: 50,
+                            color: colorconstant.containerbox,
+                            child: Center(
+                                child: Text(
+                              'Earthquake...🌏',
+                              style: TextStyle(
+                                  color: colorconstant.secondoryfont,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ))),
+                      )
                     ],
                   )
                 ],
