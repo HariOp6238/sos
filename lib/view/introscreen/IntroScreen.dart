@@ -68,18 +68,15 @@ class IntroScreenState extends State<IntroScreen> {
               child: Container(
                   height: 800,
                   width: double.infinity,
-                  child: Image.asset(
-                    'assets/2.png',
-                    fit: BoxFit.cover,
-                  ))),
+                  child: Image.asset('assets/c1.png', fit: BoxFit.cover))),
           title: "Welcome to Rapid Responce!",
           body:
               " Your ultimate companion for staying safe and prepared in any situation,Your safety is our priority",
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
-            bodyFlex: 5,
-            imageFlex: 8,
+            bodyFlex: 4,
+            imageFlex: 14,
             safeArea: 100,
           ),
         ),
@@ -91,7 +88,7 @@ class IntroScreenState extends State<IntroScreen> {
                   height: 800,
                   width: double.infinity,
                   child: Image.asset(
-                    'assets/8.jpg',
+                    'assets/c2.png',
                     fit: BoxFit.cover,
                   ))),
           title: "SOS Button !",
@@ -100,8 +97,8 @@ class IntroScreenState extends State<IntroScreen> {
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
-            bodyFlex: 5,
-            imageFlex: 8,
+            bodyFlex: 15,
+            imageFlex: 2,
             safeArea: 100,
           ),
         ),
@@ -114,16 +111,16 @@ class IntroScreenState extends State<IntroScreen> {
                   height: 800,
                   width: double.infinity,
                   child: Image.asset(
-                    'assets/7.jpg',
+                    'assets/c3.png',
                     fit: BoxFit.cover,
                   ))),
           title: "Personalized  Emergency Contacts !",
           body:
-              "There are 2 categories in contact Genaral and Personal. We can add the desired contacts in personal and\nIn general you can see the emergency contacts like Polica,Fire Force,Disaster Management",
+              "There are 2 categories in contact Genaral and Personal. We can add the desired contacts in personal and In general you can see the emergency contacts like Polica,Fire Force,Disaster Management",
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
-            bodyFlex: 5,
+            bodyFlex: 13,
             imageFlex: 1,
             safeArea: 100,
           ),
@@ -137,7 +134,7 @@ class IntroScreenState extends State<IntroScreen> {
                   height: 800,
                   width: double.infinity,
                   child: Image.asset(
-                    'assets/3.jpg',
+                    'assets/c4.png',
                     fit: BoxFit.cover,
                   ))),
           title: "Emergency Support At Your Fingertip !",
@@ -146,8 +143,8 @@ class IntroScreenState extends State<IntroScreen> {
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
-            bodyFlex: 5,
-            imageFlex: 5,
+            bodyFlex: 10,
+            imageFlex: 1,
             safeArea: 100,
           ),
         ),
@@ -160,7 +157,7 @@ class IntroScreenState extends State<IntroScreen> {
                   height: 800,
                   width: double.infinity,
                   child: Image.asset(
-                    'assets/4.jpg',
+                    "assets/c5.png",
                     fit: BoxFit.cover,
                   ))),
           title: "Real Time News",
@@ -169,8 +166,8 @@ class IntroScreenState extends State<IntroScreen> {
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
-            bodyFlex: 5,
-            imageFlex: 11,
+            bodyFlex: 2,
+            imageFlex: 5,
             safeArea: 100,
           ),
         ),
@@ -183,12 +180,11 @@ class IntroScreenState extends State<IntroScreen> {
                   height: 800,
                   width: double.infinity,
                   child: Image.asset(
-                    'assets/5.jpg',
+                    'assets/c6.png',
                     fit: BoxFit.cover,
                   ))),
-          title: "Full Screen Page",
-          body:
-              "Pages can be full screen as well.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id euismod lectus, non tempor felis. Nam rutrum rhoncus est ac venenatis.",
+          title: "Prsonolized Theme",
+          body: "You can switch theme as your need",
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,

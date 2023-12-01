@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sos/controller/provider/Contactprovider.dart';
+import 'package:sos/controller/provider/newsapi.dart';
 import 'package:sos/controller/provider/themeprovider.dart';
 import 'package:sos/model/model.dart';
 
@@ -33,6 +34,9 @@ class _MyappState extends State<Myapp> {
           ),
           ChangeNotifierProvider(
             create: (context) => ThemeProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => NewsProvider(),
           ),
         ],
         child: Builder(builder: (BuildContext context) {
