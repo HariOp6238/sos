@@ -4,10 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sos/controller/provider/themeprovider.dart';
-
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/more/subscreens/profile.dart';
 
