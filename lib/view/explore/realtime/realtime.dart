@@ -88,7 +88,7 @@ class _RealState extends State<Real> {
                                                 .urlToImage
                                                 .toString() ??
                                             '',
-                                        fit: BoxFit.fill,
+                                        fit: BoxFit.cover,
                                       ),
                               ),
                               SizedBox(
