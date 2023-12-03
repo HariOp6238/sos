@@ -12,7 +12,6 @@ import 'package:lottie/lottie.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sos/model/model.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
-import 'package:sos/view/explore/explore.dart';
 import 'package:sos/view/explore/safetytips/safetytips.dart';
 import 'package:sos/view/hiddendrawer/hiddendrawer.dart';
 import 'package:sos/view/notification/noti.dart';
