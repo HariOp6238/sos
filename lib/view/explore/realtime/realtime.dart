@@ -105,6 +105,7 @@ class _RealState extends State<Real> {
                                     maxLines: 2,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
+                                      color: colorconstant.font,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18,
                                     ),
@@ -126,6 +127,7 @@ class _RealState extends State<Real> {
                                     maxLines: 5,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
+                                      color: colorconstant.font,
                                       fontSize: 17,
                                     ),
                                   ),
@@ -146,7 +148,7 @@ class _RealState extends State<Real> {
                                         mode: LaunchMode.externalApplication);
                                   },
                                   child: Container(
-                                    width: 100,
+                                    width: 80,
                                     height: 30,
                                     decoration: BoxDecoration(
                                         color: colorconstant.containerbox,
@@ -156,7 +158,12 @@ class _RealState extends State<Real> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
                                       children: [
-                                        Text('More'),
+                                        Text(
+                                          'More',
+                                          style: TextStyle(
+                                            color: colorconstant.font,
+                                          ),
+                                        ),
                                         Icon(
                                           Icons.arrow_forward_ios_outlined,
                                           color: Colors.blue,
