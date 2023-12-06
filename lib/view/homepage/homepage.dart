@@ -2,7 +2,6 @@
 
 import 'dart:async';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:geocoding/geocoding.dart';
@@ -23,8 +22,6 @@ class Homepage extends StatefulWidget {
   @override
   State<Homepage> createState() => _HomepageState();
 }
-
-AudioPlayer audioPlayer = AudioPlayer();
 
 class _HomepageState extends State<Homepage> {
   _makePhoneCall(String phoneNumber) async {
