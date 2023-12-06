@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sos/controller/themecontroller.dart';
+import 'package:sos/controller/provider/themeprovider.dart';
+
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/more/subscreens/distress_message.dart';
 
@@ -123,10 +125,10 @@ class _MydrawerState extends State<Mydrawer> {
               trailing: CupertinoSwitch(
                 activeColor: Colors.black,
                 trackColor: Colors.white60,
-                value: Provider.of<ThemeProvider>(context).isDarkMode,
+                value: Provider.of<ThemeProvider>(context).isdakmode,
                 onChanged: (value) {
                   Provider.of<ThemeProvider>(context, listen: false)
-                      .toggleTheme();
+                      .Toggletheme();
                 },
               ),
             ),
@@ -190,6 +192,7 @@ class _MydrawerState extends State<Mydrawer> {
                 final SharedPreferences preferences =
                     await SharedPreferences.getInstance();
                 preferences.remove('username');
+                preferences.remove('profile_image');
 
                 SystemNavigator.pop();
               },

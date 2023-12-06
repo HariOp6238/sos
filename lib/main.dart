@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:sos/controller/themecontroller.dart';
-import 'package:sos/controller/contactclass.dart';
+import 'package:sos/controller/provider/Contactprovider.dart';
+import 'package:sos/controller/provider/newsapi.dart';
+import 'package:sos/controller/provider/themeprovider.dart';
+import 'package:sos/model/model.dart';
 
 import 'package:sos/view/splashscreen/splashscreen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await HomePageController.initDb();
-  runApp(ChangeNotifierProvider(
-      create: (context) => ThemeProvider(), child: Myapp()));
+  await Hive.initFlutter();
+  Hive.registerAdapter(contactmodelAdapter());
+  await Hive.openBox<contactmodel>('contact');
+
+  runApp(Myapp());
 }
 
 class Myapp extends StatefulWidget {
@@ -22,18 +27,28 @@ class Myapp extends StatefulWidget {
 class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(brightness: Brightness.light
-          // light theme settings
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => ContactProvider(),
           ),
-      darkTheme: ThemeData(brightness: Brightness.dark
-          // dark theme settings
+          ChangeNotifierProvider(
+            create: (context) => ThemeProvider(),
           ),
-      themeMode: Provider.of<ThemeProvider>(context).isDarkMode
-          ? ThemeMode.dark
-          : ThemeMode.light,
-      debugShowCheckedModeBanner: false,
-      home: Splashscreen(),
-    );
+          ChangeNotifierProvider(
+            create: (context) => NewsProvider(),
+          ),
+        ],
+        child: Builder(builder: (BuildContext context) {
+          final themechanger = Provider.of<ThemeProvider>(context);
+          return MaterialApp(
+            theme: ThemeData(brightness: Brightness.light),
+            darkTheme: ThemeData(brightness: Brightness.dark),
+            themeMode:
+                themechanger.isdakmode ? ThemeMode.dark : ThemeMode.light,
+            debugShowCheckedModeBanner: false,
+            home: Splashscreen(),
+          );
+        }));
   }
 }

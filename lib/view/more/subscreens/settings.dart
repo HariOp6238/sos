@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sos/controller/themecontroller.dart';
+import 'package:sos/controller/provider/themeprovider.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 import 'package:sos/view/more/subscreens/profile.dart';
 
@@ -74,6 +74,7 @@ class _settingsState extends State<settings> {
                   final SharedPreferences preferences =
                       await SharedPreferences.getInstance();
                   preferences.remove('username');
+                  preferences.remove('profile_image');
 
                   SystemNavigator.pop();
                 },
@@ -158,62 +159,11 @@ class _settingsState extends State<settings> {
                 trailing: CupertinoSwitch(
                   activeColor: Colors.black,
                   trackColor: Colors.white60,
-                  value: Provider.of<ThemeProvider>(context).isDarkMode,
+                  value: Provider.of<ThemeProvider>(context).isdakmode,
                   onChanged: (value) {
                     Provider.of<ThemeProvider>(context, listen: false)
-                        .toggleTheme();
+                        .Toggletheme();
                   },
-                ),
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.location_on, color: colorconstant.font),
-                title: Text("Location",
-                    style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
-                trailing: CupertinoSwitch(
-                  activeColor: Colors.black,
-                  trackColor: Colors.white,
-                  value: false,
-                  onChanged: (value) {},
-                ),
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.call, color: colorconstant.font),
-                title: Text("Calls",
-                    style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
-                trailing: CupertinoSwitch(
-                  activeColor: Colors.black,
-                  trackColor: Colors.white,
-                  value: false,
-                  onChanged: (value) {},
-                ),
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.message, color: colorconstant.font),
-                title: Text("Messages",
-                    style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
-                trailing: CupertinoSwitch(
-                  activeColor: Colors.black,
-                  trackColor: Colors.white,
-                  value: false,
-                  onChanged: (value) {},
                 ),
               )),
           Padding(

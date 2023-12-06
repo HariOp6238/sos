@@ -25,7 +25,7 @@ class _ExploreState extends State<Explore> {
         centerTitle: true,
         title: Text(
           "Explore",
-          style: TextStyle(fontSize: 25),
+          style: TextStyle(fontSize: 20),
         ),
       ),
       body: SafeArea(
