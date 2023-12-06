@@ -221,17 +221,16 @@ class IntroScreenState extends State<IntroScreen> {
       back: const Icon(Icons.arrow_back),
       skip: const Text('Skip',
           style: TextStyle(
-            fontWeight: FontWeight.w600,
-            // color: Color.fromARGB(255, 205, 12, 12)
-          )),
+              fontWeight: FontWeight.w600,
+              color: Color.fromARGB(255, 205, 12, 12))),
       next: const Icon(
         Icons.arrow_forward,
-        // color: Color.fromARGB(255, 213, 14, 14),
+        color: Color.fromARGB(255, 213, 14, 14),
       ),
       done: const Text('Done',
           style: TextStyle(
             fontWeight: FontWeight.w600,
-            // color: Color.fromARGB(255, 213, 14, 14),
+            color: Color.fromARGB(255, 213, 14, 14),
           )),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: const EdgeInsets.all(16),
