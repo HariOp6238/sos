@@ -74,6 +74,7 @@ class _settingsState extends State<settings> {
                   final SharedPreferences preferences =
                       await SharedPreferences.getInstance();
                   preferences.remove('username');
+                  preferences.remove('profile_image');
 
                   SystemNavigator.pop();
                 },
@@ -163,57 +164,6 @@ class _settingsState extends State<settings> {
                     Provider.of<ThemeProvider>(context, listen: false)
                         .Toggletheme();
                   },
-                ),
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.location_on, color: colorconstant.font),
-                title: Text("Location",
-                    style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
-                trailing: CupertinoSwitch(
-                  activeColor: Colors.black,
-                  trackColor: Colors.white,
-                  value: false,
-                  onChanged: (value) {},
-                ),
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.call, color: colorconstant.font),
-                title: Text("Calls",
-                    style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
-                trailing: CupertinoSwitch(
-                  activeColor: Colors.black,
-                  trackColor: Colors.white,
-                  value: false,
-                  onChanged: (value) {},
-                ),
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: colorconstant.containerbox,
-                leading: Icon(Icons.message, color: colorconstant.font),
-                title: Text("Messages",
-                    style: TextStyle(
-                        color: Colors.grey.shade600,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)),
-                trailing: CupertinoSwitch(
-                  activeColor: Colors.black,
-                  trackColor: Colors.white,
-                  value: false,
-                  onChanged: (value) {},
                 ),
               )),
           Padding(
