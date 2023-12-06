@@ -48,7 +48,7 @@ class About extends StatelessWidget {
                             Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "We are a homegrown Canadian company that started in 2018 when our co-founders felt they could revolutionize emergency alerting by making current solutions easier to use, more affordable and scalable so that communities and workplaces of all sizes can benefit from solutions previously only available to a few who could afford them.",
+                                  "We are a homegrown Indian company that started in 2023 when our founders felt they could revolutionize emergency alerting by making current solutions easier to use, more affordable and scalable so that communities and workplaces of all sizes can benefit from solutions previously only available to a few who could afford them.",
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
                                       fontSize: 16,
@@ -74,7 +74,6 @@ class About extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                Icon(Icons.facebook),
                                 Icon(Icons.email),
                               ],
                             ),
@@ -87,7 +86,6 @@ class About extends StatelessWidget {
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Icon(Icons.facebook),
                                 Icon(Icons.email),
                               ],
                             ),
@@ -102,7 +100,7 @@ class About extends StatelessWidget {
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Icon(Icons.facebook),
+
                                   Icon(Icons.email),
                                 ],
                               ),
@@ -116,7 +114,6 @@ class About extends StatelessWidget {
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Icon(Icons.facebook),
                                 Icon(Icons.email),
                               ],
                             ),
@@ -131,7 +128,7 @@ class About extends StatelessWidget {
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Icon(Icons.facebook),
+
                                   Icon(Icons.email),
                                 ],
                               ),

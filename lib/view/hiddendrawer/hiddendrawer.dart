@@ -192,6 +192,7 @@ class _MydrawerState extends State<Mydrawer> {
                 final SharedPreferences preferences =
                     await SharedPreferences.getInstance();
                 preferences.remove('username');
+                preferences.remove('profile_image');
 
                 SystemNavigator.pop();
               },
