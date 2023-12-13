@@ -52,7 +52,7 @@ class _DrowningState extends State<Drowning> {
                           data[index]['subtitle1'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Color.fromARGB(255, 11, 183, 16),
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -70,7 +70,7 @@ class _DrowningState extends State<Drowning> {
                           data[index]['subtitle2'],
                           textAlign: TextAlign.justify,
                           style: TextStyle(
-                            color: Colors.black,
+                            color:Color.fromARGB(255, 11, 183, 16),
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),

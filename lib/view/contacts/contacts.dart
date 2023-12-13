@@ -3,9 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sos/model/model.dart';
-
 import 'package:sos/utils/constant/colorconstant/colors.dart';
-
 import 'package:tab_container/tab_container.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -217,7 +215,7 @@ class _ContactState extends State<Contact> {
             ),
           ),
           Container(
-            //****************general contact tab********************//
+            
             child: Expanded(
               child: ListView.builder(
                 itemCount: mypersonalcontatsname.length,

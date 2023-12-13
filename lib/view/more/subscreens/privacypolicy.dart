@@ -90,12 +90,13 @@ class privacyPolicy extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "If you have any questions about this Privacy Policy, please contact us at: \n Public Emergency Alerting Services Inc888 \n 4 Avenue SW #1906 Calgary, Alberta, Canada \n T2P 0V2 Attn: Privacy Officer \n Email: privacy@peasi.com \n Phone: +1-888-400-5661",
+                                  "If you have any questions about this Privacy Policy, please contact : \n Public Emergency Alerting Services near you. \n Emergency response numbers available for you. \n Akshay Raj : our co-founder \n Email: akshayraj26062002@email.com \n Phone: +91 8590207046",
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
                                       fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
                               ),
+                              SizedBox(height: 50,)
                             ],
                           ),
                         ),
