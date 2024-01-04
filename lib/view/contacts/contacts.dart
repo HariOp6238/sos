@@ -141,126 +141,119 @@ class _ContactState extends State<Contact> {
         children: [
           Container(
             //****************personal contact tab********************//
-            child: Expanded(
-              child: FutureBuilder(
-                future: Hive.openBox<contactmodel>('contact'),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    final contactbox = Hive.box<contactmodel>('contact');
-                    return ListView.builder(
-                      itemCount: contactbox.length,
-                      itemBuilder: (context, index) {
-                        final contact = contactbox.getAt(index) as contactmodel;
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: colorconstant.containerbox,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  (contact.name),
-                                  style: TextStyle(
-                                      color: colorconstant.font,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Spacer(),
-                                IconButton(
-                                  onPressed: () {
-                                    _makePhoneCall(
-                                        phone: contact.Phonenumber.toString());
-                                  },
-                                  icon: Icon(Icons.call,
-                                      color: colorconstant.font),
-                                ),
-                                IconButton(
-                                    onPressed: () {
-                                      _launchSMS(
-                                          phone:
-                                              contact.Phonenumber.toString());
-                                    },
-                                    icon: Icon(
-                                      Icons.message,
-                                      color: colorconstant.font,
-                                    )),
-                                IconButton(
-                                    onPressed: () {
-                                      _deleteContact(index);
-                                    },
-                                    icon: Icon(
-                                      Icons.delete,
-                                      color: colorconstant.font,
-                                    )),
-                              ],
-                            ),
-                            height: 70,
-                            width: double.infinity,
+            child: FutureBuilder(
+              future: Hive.openBox<contactmodel>('contact'),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  final contactbox = Hive.box<contactmodel>('contact');
+                  return ListView.builder(
+                    itemCount: contactbox.length,
+                    itemBuilder: (context, index) {
+                      final contact = contactbox.getAt(index) as contactmodel;
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: colorconstant.containerbox,
                           ),
-                        );
-                      },
-                    );
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
-              ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                (contact.name),
+                                style: TextStyle(
+                                    color: colorconstant.font,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Spacer(),
+                              IconButton(
+                                onPressed: () {
+                                  _makePhoneCall(
+                                      phone: contact.Phonenumber.toString());
+                                },
+                                icon: Icon(Icons.call,
+                                    color: colorconstant.font),
+                              ),
+                              IconButton(
+                                  onPressed: () {
+                                    _launchSMS(
+                                        phone:
+                                            contact.Phonenumber.toString());
+                                  },
+                                  icon: Icon(
+                                    Icons.message,
+                                    color: colorconstant.font,
+                                  )),
+                              IconButton(
+                                  onPressed: () {
+                                    _deleteContact(index);
+                                  },
+                                  icon: Icon(
+                                    Icons.delete,
+                                    color: colorconstant.font,
+                                  )),
+                            ],
+                          ),
+                          height: 70,
+                          width: double.infinity,
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
             ),
           ),
-          Container(
-            
-            child: Expanded(
-              child: ListView.builder(
-                itemCount: mypersonalcontatsname.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(top: 8, bottom: 8),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: colorconstant.containerbox,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          mypersonalcontatsname[index],
-                          style: TextStyle(
-                              color: colorconstant.font,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        IconButton(
-                          onPressed: () => _makePhoneCall(
-                              phone: mypersonalcontactnumber[index]),
-                          icon: Icon(Icons.call, color: colorconstant.font),
-                        ),
-                        IconButton(
-                            onPressed: () {
-                              _launchSMS(phone: mypersonalcontactnumber[index]);
-                            },
-                            icon: Icon(
-                              Icons.message,
-                              color: colorconstant.font,
-                            )),
-                        SizedBox(
-                          width: 10,
-                        )
-                      ],
-                    ),
-                    height: 70,
-                    width: double.infinity,
-                  ),
+          ListView.builder(
+            itemCount: mypersonalcontatsname.length,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.only(top: 8, bottom: 8),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: colorconstant.containerbox,
                 ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      mypersonalcontatsname[index],
+                      style: TextStyle(
+                          color: colorconstant.font,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Spacer(),
+                    IconButton(
+                      onPressed: () => _makePhoneCall(
+                          phone: mypersonalcontactnumber[index]),
+                      icon: Icon(Icons.call, color: colorconstant.font),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          _launchSMS(phone: mypersonalcontactnumber[index]);
+                        },
+                        icon: Icon(
+                          Icons.message,
+                          color: colorconstant.font,
+                        )),
+                    SizedBox(
+                      width: 10,
+                    )
+                  ],
+                ),
+                height: 70,
+                width: double.infinity,
               ),
             ),
           ),
