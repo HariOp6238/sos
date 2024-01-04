@@ -39,152 +39,147 @@ class _RealState extends State<Real> {
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // for better visualization shimmer is used
-            _isloading
-                ? Expanded(
-                    child: ListView.separated(
-                        itemBuilder: (context, index) => Shimmer.fromColors(
-                            baseColor: Colors.grey[400]!,
-                            highlightColor: Colors.grey[300]!,
-                            child: newscardskeleton()),
-                        separatorBuilder: (context, index) => SizedBox(
-                              height: 16,
-                            ),
-                        itemCount: 7))
-                : SizedBox(
-                    height: MediaQuery.sizeOf(context).height * 0.8,
-                    child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemCount: newprovider.Newapi?.articles?.length,
-                      itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Container(
-                          padding: EdgeInsets.all(0),
-                          decoration: BoxDecoration(
-                              color: Colors.grey.shade300,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20)),
-                                height: 200,
-                                width: 400,
-                                child: newprovider.Newapi?.articles?[index]
-                                            .urlToImage ==
-                                        null
-                                    ? Image.network(
-                                        'https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg',
-                                        fit: BoxFit.fill,
-                                      )
-                                    : Image.network(
-                                        newprovider.Newapi?.articles?[index]
-                                                .urlToImage
-                                                .toString() ??
-                                            '',
-                                        fit: BoxFit.cover,
-                                      ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(8),
-                                child: Expanded(
-                                  child: Text(
-                                    newprovider.Newapi?.articles?[index].title
-                                            .toString() ??
-                                        '',
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      color: colorconstant.font,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(8),
-                                child: Expanded(
-                                  child: Text(
-                                    newprovider.Newapi?.articles?[index]
-                                            .description
-                                            .toString() ??
-                                        '',
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 5,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      color: colorconstant.font,
-                                      fontSize: 17,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    launchUrl(
-                                        Uri.parse(newprovider
-                                                .Newapi?.articles?[index].url
-                                                .toString() ??
-                                            ''),
-                                        mode: LaunchMode.externalApplication);
-                                  },
-                                  child: Container(
-                                    width: 80,
-                                    height: 30,
-                                    decoration: BoxDecoration(
-                                        color: colorconstant.containerbox,
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text(
-                                          'More',
-                                          style: TextStyle(
-                                            color: colorconstant.font,
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios_outlined,
-                                          color: Colors.blue,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              )
-                            ],
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // for better visualization shimmer is used
+          _isloading
+              ? Expanded(
+                  child: ListView.separated(
+                      itemBuilder: (context, index) => Shimmer.fromColors(
+                          baseColor: Colors.grey[400]!,
+                          highlightColor: Colors.grey[300]!,
+                          child: newscardskeleton()),
+                      separatorBuilder: (context, index) => SizedBox(
+                            height: 16,
                           ),
+                      itemCount: 7))
+              : Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: newprovider.Newapi?.articles?.length,
+                    itemBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        padding: EdgeInsets.all(0),
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20)),
+                              height: 200,
+                              width: 400,
+                              child: newprovider.Newapi?.articles?[index]
+                                          .urlToImage ==
+                                      null
+                                  ? Image.network(
+                                      'https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg',
+                                      fit: BoxFit.fill,
+                                    )
+                                  : Image.network(
+                                      newprovider.Newapi?.articles?[index]
+                                              .urlToImage
+                                              .toString() ??
+                                          '',
+                                      fit: BoxFit.cover,
+                                    ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              child: SizedBox(
+                                child: Text(
+                                  newprovider.Newapi?.articles?[index].title
+                                          .toString() ??
+                                      '',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: colorconstant.font,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              child: SizedBox(
+                                child: Text(
+                                  newprovider
+                                          .Newapi?.articles?[index].description
+                                          .toString() ??
+                                      '',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 5,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: colorconstant.font,
+                                    fontSize: 17,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: GestureDetector(
+                                onTap: () {
+                                  launchUrl(
+                                      Uri.parse(newprovider
+                                              .Newapi?.articles?[index].url
+                                              .toString() ??
+                                          ''),
+                                      mode: LaunchMode.externalApplication);
+                                },
+                                child: Container(
+                                  width: 80,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                      color: colorconstant.containerbox,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        'More',
+                                        style: TextStyle(
+                                          color: colorconstant.font,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.arrow_forward_ios_outlined,
+                                        color: Colors.blue,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            )
+                          ],
                         ),
                       ),
                     ),
                   ),
-          ],
-        ),
+                ),
+        ],
       ),
     );
   }
