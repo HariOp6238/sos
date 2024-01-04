@@ -56,12 +56,13 @@ class _RealState extends State<Real> {
                               height: 16,
                             ),
                         itemCount: 7))
-                : Expanded(
+                : SizedBox(
+                    height: MediaQuery.sizeOf(context).height * 0.8,
                     child: ListView.builder(
                       scrollDirection: Axis.vertical,
                       itemCount: newprovider.Newapi?.articles?.length,
                       itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: Container(
                           padding: EdgeInsets.all(0),
                           decoration: BoxDecoration(
