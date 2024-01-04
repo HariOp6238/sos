@@ -334,20 +334,20 @@ class _HomepageState extends State<Homepage> {
   }
 
 // Location permission
-Future<void> _requestLocationPermission() async {
-  // Request location permission
-  final status = await Permission.location.request();
+  Future<void> _requestLocationPermission() async {
+    // Request location permission
+    final status = await Permission.location.request();
 
-  // Check if permission is granted
-  if (status == PermissionStatus.granted) {
-    // Permission granted, proceed with getting the current location
-    _getcurrentlocation();
-  } else {
-    // Permission not granted, handle the case accordingly (e.g., show a message to the user)
-    print('Location permission not granted');
-    // You may want to show an error message or take some other action here
+    // Check if permission is granted
+    if (status == PermissionStatus.granted) {
+      // Permission granted, proceed with getting the current location
+      _getcurrentlocation();
+    } else {
+      // Permission not granted, handle the case accordingly (e.g., show a message to the user)
+      print('Location permission not granted');
+      // You may want to show an error message or take some other action here
+    }
   }
-}
 
   Future<void> _getcurrentlocation() async {
     try {
@@ -433,7 +433,7 @@ class _MyDialogState extends State<MyDialog> {
             Navigator.of(context).pop();
             _timer.cancel();
             ScaffoldMessenger(child: SnackBar(content: Text('canceled')));
-            _showsnackbar('Message canceled');
+            _showsnackbar('Message cancelled');
           },
           child: Text(
             'Cancel',
@@ -480,7 +480,7 @@ class _MyDialogState extends State<MyDialog> {
 
   _launchSMS(List<String> phoneNumbers) async {
     final String message =
-        'This a Distress message please help ! i am in a Emergency situation  Mylocation is kochi,kakkanad'; // Replace with your desired message
+        'This a Distress message please help ! i am in an emergency situation'; // Replace with your desired message
 
     // Construct the SMS URL with the recipient's phone numbers and the message
     final Uri uri = Uri.parse('sms:${phoneNumbers.join(',')}?body=$message');
