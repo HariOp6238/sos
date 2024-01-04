@@ -37,6 +37,8 @@ class _ContactState extends State<Contact> {
 
   @override
   Widget build(BuildContext context) {
+    final contactbox = Hive.box<contactmodel>('contact');
+
     List mypersonalcontatsname = [
       "Police",
       "Ambalance",
@@ -92,6 +94,7 @@ class _ContactState extends State<Contact> {
                       height: 10,
                     ),
                     TextField(
+                      keyboardType: TextInputType.number,
                       controller: numberController,
                       onChanged: (value) {},
                       decoration: InputDecoration(
@@ -105,6 +108,8 @@ class _ContactState extends State<Contact> {
                   OutlinedButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        nameController.clear();
+                        numberController.clear();
                       },
                       child: Text("cancel")),
 
@@ -115,6 +120,8 @@ class _ContactState extends State<Contact> {
                               MaterialStatePropertyAll(Colors.red[700])),
                       onPressed: () async {
                         {
+                          //funciton to add contacts  to hive
+
                           final newContact = contactmodel(
                               nameController.text, numberController.text);
                           final contactBox = Hive.box<contactmodel>('contact');
@@ -122,9 +129,8 @@ class _ContactState extends State<Contact> {
                           setState(() {});
 
                           Navigator.pop(context);
-                          //funciton to add employee to database
-
-                          // funciton to get data from data base after adding new data
+                          nameController.clear();
+                          numberController.clear();
                         }
                         ;
                       },
@@ -136,130 +142,111 @@ class _ContactState extends State<Contact> {
         ],
         elevation: 0,
       ),
+      //**************************************** pERSONAL CONTACT TAB *********************************************//
+
       body: TabContainer(
         color: colorconstant.myprimary,
         children: [
-          Container(
-            //****************personal contact tab********************//
-            child: Expanded(
-              child: FutureBuilder(
-                future: Hive.openBox<contactmodel>('contact'),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    final contactbox = Hive.box<contactmodel>('contact');
-                    return ListView.builder(
-                      itemCount: contactbox.length,
-                      itemBuilder: (context, index) {
-                        final contact = contactbox.getAt(index) as contactmodel;
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: colorconstant.containerbox,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  (contact.name),
-                                  style: TextStyle(
-                                      color: colorconstant.font,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Spacer(),
-                                IconButton(
-                                  onPressed: () {
-                                    _makePhoneCall(
-                                        phone: contact.Phonenumber.toString());
-                                  },
-                                  icon: Icon(Icons.call,
-                                      color: colorconstant.font),
-                                ),
-                                IconButton(
-                                    onPressed: () {
-                                      _launchSMS(
-                                          phone:
-                                              contact.Phonenumber.toString());
-                                    },
-                                    icon: Icon(
-                                      Icons.message,
-                                      color: colorconstant.font,
-                                    )),
-                                IconButton(
-                                    onPressed: () {
-                                      _deleteContact(index);
-                                    },
-                                    icon: Icon(
-                                      Icons.delete,
-                                      color: colorconstant.font,
-                                    )),
-                              ],
-                            ),
-                            height: 70,
-                            width: double.infinity,
-                          ),
-                        );
-                      },
-                    );
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                },
-              ),
-            ),
-          ),
-          Container(
-            
-            child: Expanded(
+          Expanded(
               child: ListView.builder(
-                itemCount: mypersonalcontatsname.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.only(top: 8, bottom: 8),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: colorconstant.containerbox,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          mypersonalcontatsname[index],
-                          style: TextStyle(
-                              color: colorconstant.font,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Spacer(),
-                        IconButton(
-                          onPressed: () => _makePhoneCall(
-                              phone: mypersonalcontactnumber[index]),
-                          icon: Icon(Icons.call, color: colorconstant.font),
-                        ),
-                        IconButton(
-                            onPressed: () {
-                              _launchSMS(phone: mypersonalcontactnumber[index]);
-                            },
-                            icon: Icon(
-                              Icons.message,
-                              color: colorconstant.font,
-                            )),
-                        SizedBox(
-                          width: 10,
-                        )
-                      ],
-                    ),
-                    height: 70,
-                    width: double.infinity,
+            itemCount: Hive.box<contactmodel>('contact').length,
+            itemBuilder: (context, index) {
+              final contact = contactbox.getAt(index) as contactmodel;
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: colorconstant.containerbox,
                   ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        (contact.name),
+                        style: TextStyle(
+                            color: colorconstant.font,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Spacer(),
+                      IconButton(
+                        onPressed: () {
+                          _makePhoneCall(phone: contact.Phonenumber.toString());
+                        },
+                        icon: Icon(Icons.call, color: colorconstant.font),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            _launchSMS(phone: contact.Phonenumber.toString());
+                          },
+                          icon: Icon(
+                            Icons.message,
+                            color: colorconstant.font,
+                          )),
+                      IconButton(
+                          onPressed: () {
+                            _deleteContact(index);
+                          },
+                          icon: Icon(
+                            Icons.delete,
+                            color: colorconstant.font,
+                          )),
+                    ],
+                  ),
+                  height: 70,
+                  width: double.infinity,
+                ),
+              );
+            },
+          )),
+
+//**************************************** GENERAL CONTACT TAB *********************************************//
+          Expanded(
+            child: ListView.builder(
+              itemCount: mypersonalcontatsname.length,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.only(top: 8, bottom: 8),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: colorconstant.containerbox,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        mypersonalcontatsname[index],
+                        style: TextStyle(
+                            color: colorconstant.font,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Spacer(),
+                      IconButton(
+                        onPressed: () => _makePhoneCall(
+                            phone: mypersonalcontactnumber[index]),
+                        icon: Icon(Icons.call, color: colorconstant.font),
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            _launchSMS(phone: mypersonalcontactnumber[index]);
+                          },
+                          icon: Icon(
+                            Icons.message,
+                            color: colorconstant.font,
+                          )),
+                      SizedBox(
+                        width: 10,
+                      )
+                    ],
+                  ),
+                  height: 70,
+                  width: double.infinity,
                 ),
               ),
             ),
