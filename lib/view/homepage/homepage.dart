@@ -446,7 +446,7 @@ class _MyDialogState extends State<MyDialog> {
             // Manually close the dialog and cancel the timer
             Navigator.of(context).pop();
             _showsgreennackbar('Message Sent');
-            _launchSMS(['9847889637', '8590207046']);
+            _launchSMS(_launchSMS(Hive.box<contactmodel>('contact')));
           },
           child: Text(
             'Confirm',
@@ -478,9 +478,9 @@ class _MyDialogState extends State<MyDialog> {
         content: Center(child: Text(value))));
   }
 
-  _launchSMS(List<String> phoneNumbers) async {
+  _launchSMS(Box<contactmodel> contactBox) async {
     final String message =
-        'This a Distress message please help ! i am in an emergency situation'; // Replace with your desired message
+        'This a Distress message please help ! i am in a Emergency situation  Mylocation is kochi,kakkanad'; // Replace with your desired message
 
     // Construct the SMS URL with the recipient's phone numbers and the message
     final Uri uri = Uri.parse('sms:${phoneNumbers.join(',')}?body=$message');

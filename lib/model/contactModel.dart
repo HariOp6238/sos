@@ -1,10 +1,8 @@
 class MyModel {
-  
   String name;
   int number;
 
-  MyModel({ 
-    
+  MyModel({
     required this.name,
     required this.number,
   });

@@ -37,6 +37,8 @@ class _ContactState extends State<Contact> {
 
   @override
   Widget build(BuildContext context) {
+    final contactbox = Hive.box<contactmodel>('contact');
+
     List mypersonalcontatsname = [
       "Police",
       "Ambalance",
@@ -92,6 +94,7 @@ class _ContactState extends State<Contact> {
                       height: 10,
                     ),
                     TextField(
+                      keyboardType: TextInputType.number,
                       controller: numberController,
                       onChanged: (value) {},
                       decoration: InputDecoration(
@@ -105,6 +108,8 @@ class _ContactState extends State<Contact> {
                   OutlinedButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        nameController.clear();
+                        numberController.clear();
                       },
                       child: Text("cancel")),
 
@@ -115,6 +120,8 @@ class _ContactState extends State<Contact> {
                               MaterialStatePropertyAll(Colors.red[700])),
                       onPressed: () async {
                         {
+                          //funciton to add contacts  to hive
+
                           final newContact = contactmodel(
                               nameController.text, numberController.text);
                           final contactBox = Hive.box<contactmodel>('contact');
@@ -122,9 +129,8 @@ class _ContactState extends State<Contact> {
                           setState(() {});
 
                           Navigator.pop(context);
-                          //funciton to add employee to database
-
-                          // funciton to get data from data base after adding new data
+                          nameController.clear();
+                          numberController.clear();
                         }
                         ;
                       },
@@ -136,6 +142,8 @@ class _ContactState extends State<Contact> {
         ],
         elevation: 0,
       ),
+      //**************************************** pERSONAL CONTACT TAB *********************************************//
+
       body: TabContainer(
         color: colorconstant.myprimary,
         children: [
@@ -175,14 +183,13 @@ class _ContactState extends State<Contact> {
                                   _makePhoneCall(
                                       phone: contact.Phonenumber.toString());
                                 },
-                                icon: Icon(Icons.call,
-                                    color: colorconstant.font),
+                                icon:
+                                    Icon(Icons.call, color: colorconstant.font),
                               ),
                               IconButton(
                                   onPressed: () {
                                     _launchSMS(
-                                        phone:
-                                            contact.Phonenumber.toString());
+                                        phone: contact.Phonenumber.toString());
                                   },
                                   icon: Icon(
                                     Icons.message,
@@ -235,8 +242,8 @@ class _ContactState extends State<Contact> {
                     ),
                     Spacer(),
                     IconButton(
-                      onPressed: () => _makePhoneCall(
-                          phone: mypersonalcontactnumber[index]),
+                      onPressed: () =>
+                          _makePhoneCall(phone: mypersonalcontactnumber[index]),
                       icon: Icon(Icons.call, color: colorconstant.font),
                     ),
                     IconButton(
