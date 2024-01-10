@@ -101,7 +101,7 @@ class _MydrawerState extends State<Mydrawer> {
               ),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => distressMessage()));
+                    MaterialPageRoute(builder: (context) => DistressMessage()));
               },
               tileColor: colorconstant.containerbox,
             ),
