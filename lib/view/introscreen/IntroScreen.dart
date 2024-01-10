@@ -31,15 +31,15 @@ class IntroScreenState extends State<IntroScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const bodyStyle = TextStyle(fontSize: 19.0);
+    // const bodyStyle = TextStyle(fontSize: 19.0);
 
     const pageDecoration = PageDecoration(
-      titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
-      bodyTextStyle: bodyStyle,
-      bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Colors.white,
-      //imagePadding: EdgeInsets.zero,
-    );
+        // titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
+        // bodyTextStyle: bodyStyle,
+        // bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+        // pageColor: Colors.white,
+        //imagePadding: EdgeInsets.zero,
+        );
 
     return IntroductionScreen(
       key: introKey,
@@ -69,9 +69,11 @@ class IntroScreenState extends State<IntroScreen> {
                   height: 800,
                   width: double.infinity,
                   child: Image.asset('assets/c1.png', fit: BoxFit.cover))),
-          title: "Welcome to Rapid Responce!",
-          body:
-              " Your ultimate companion for staying safe and prepared in any situation,Your safety is our priority",
+          title: "",
+          // Welcome to Rapid Responce!
+
+          body: "",
+          //  Your ultimate companion for staying safe and prepared in any situation,Your safety is our priority,
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -91,9 +93,11 @@ class IntroScreenState extends State<IntroScreen> {
                     'assets/c2.png',
                     fit: BoxFit.cover,
                   ))),
-          title: "SOS Button !",
-          body:
-              "There is a SOS button for emergencies.After pressing that butoon an alert call or message will be sent",
+          title: ""
+          // SOS Button !
+          ,
+          body: "",
+          //There is a SOS button for emergencies.After pressing that butoon an alert call or message will be sent,
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -114,9 +118,11 @@ class IntroScreenState extends State<IntroScreen> {
                     'assets/c3.png',
                     fit: BoxFit.cover,
                   ))),
-          title: "Personalized  Emergency Contacts !",
-          body:
-              "There are 2 categories in contact Genaral and Personal. We can add the desired contacts in personal and In general you can see the emergency contacts like Polica,Fire Force,Disaster Management",
+          title: ""
+          // Personalized  Emergency Contacts !
+          ,
+          body: "",
+          //There are 2 categories in contact Genaral and Personal. We can add the desired contacts in personal and In general you can see the emergency contacts like Polica,Fire Force,Disaster Management
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -137,9 +143,12 @@ class IntroScreenState extends State<IntroScreen> {
                     'assets/c4.png',
                     fit: BoxFit.cover,
                   ))),
-          title: "Emergency Support At Your Fingertip !",
-          body:
-              " Find crucial information to handle variuos kinds of emergencies at all time",
+          title: "",
+
+          // Emergency Support At Your Fingertip !
+          body: "",
+
+          // Find crucial information to handle variuos kinds of emergencies at all time
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -160,9 +169,12 @@ class IntroScreenState extends State<IntroScreen> {
                     "assets/c5.png",
                     fit: BoxFit.cover,
                   ))),
-          title: "Real Time News",
-          body:
-              "We bring recent natural disasters news and update special reports to all users",
+          title: "",
+
+          // Real Time News
+          body: "",
+
+          // We bring recent natural disasters news and update special reports to all users
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -183,8 +195,12 @@ class IntroScreenState extends State<IntroScreen> {
                     'assets/c6.png',
                     fit: BoxFit.cover,
                   ))),
-          title: "Prsonolized Theme",
-          body: "You can switch theme as your need",
+          title: "",
+
+          // Prsonolized Theme
+          body: "",
+
+          // You can switch theme as your need
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,

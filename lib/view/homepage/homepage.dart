@@ -2,7 +2,6 @@
 
 import 'dart:async';
 
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:geocoding/geocoding.dart';
@@ -23,8 +22,6 @@ class Homepage extends StatefulWidget {
   @override
   State<Homepage> createState() => _HomepageState();
 }
-
-AudioPlayer audioPlayer = AudioPlayer();
 
 class _HomepageState extends State<Homepage> {
   _makePhoneCall(String phoneNumber) async {
@@ -336,12 +333,20 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
-  //location permission
+// Location permission
   Future<void> _requestLocationPermission() async {
+    // Request location permission
     final status = await Permission.location.request();
+
+    // Check if permission is granted
     if (status == PermissionStatus.granted) {
+      // Permission granted, proceed with getting the current location
       _getcurrentlocation();
-    } else {}
+    } else {
+      // Permission not granted, handle the case accordingly (e.g., show a message to the user)
+      print('Location permission not granted');
+      // You may want to show an error message or take some other action here
+    }
   }
 
   Future<void> _getcurrentlocation() async {
@@ -441,7 +446,7 @@ class _MyDialogState extends State<MyDialog> {
             // Manually close the dialog and cancel the timer
             Navigator.of(context).pop();
             _showsgreennackbar('Message Sent');
-            _launchSMS(['9847889637', '8590207046']);
+            _launchSMS(_launchSMS(Hive.box<contactmodel>('contact')));
           },
           child: Text(
             'Confirm',
@@ -473,9 +478,19 @@ class _MyDialogState extends State<MyDialog> {
         content: Center(child: Text(value))));
   }
 
-  _launchSMS(List<String> phoneNumbers) async {
+  _launchSMS(Box<contactmodel> contactBox) async {
     final String message =
-        'This a Distress message please help ! i am in a Emergency situation  Mylocation is kochi,kakkanad'; // Replace with your desired message
+        'This a Distress message please help ! i am in a Emergency situation'; // Replace with your desired message
+
+    List<String> phoneNumbers = [];
+
+    // Retrieve all numbers from the contact box
+    for (int i = 0; i < contactBox.length; i++) {
+      final contact = contactBox.getAt(i);
+      if (contact != null) {
+        phoneNumbers.add(contact.Phonenumber.toString());
+      }
+    }
 
     // Construct the SMS URL with the recipient's phone numbers and the message
     final Uri uri = Uri.parse('sms:${phoneNumbers.join(',')}?body=$message');
