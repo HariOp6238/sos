@@ -37,8 +37,6 @@ class _ContactState extends State<Contact> {
 
   @override
   Widget build(BuildContext context) {
-    final contactbox = Hive.box<contactmodel>('contact');
-
     List mypersonalcontatsname = [
       "Police",
       "Ambalance",
