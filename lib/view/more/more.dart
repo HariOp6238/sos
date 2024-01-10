@@ -73,7 +73,7 @@ void navigateToPage(BuildContext context, int pageindex) {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => distressMessage(),
+            builder: (context) => DistressMessage(),
           ));
       break;
     case 2:

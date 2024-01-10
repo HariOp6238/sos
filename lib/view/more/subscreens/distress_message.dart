@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sos/utils/constant/colorconstant/colors.dart';
 
-class distressMessage extends StatelessWidget {
-  const distressMessage({super.key});
+class DistressMessage extends StatefulWidget {
+  const DistressMessage({Key? key}) : super(key: key);
+
+  @override
+  State<DistressMessage> createState() => _DistressMessageState();
+}
+
+class _DistressMessageState extends State<DistressMessage> {
+  TextEditingController messageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController messagecontroller = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red.shade700,
@@ -32,12 +39,15 @@ class distressMessage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: RichText(
-                          text: TextSpan(
-                              text: "Your Message",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black))),
+                        text: TextSpan(
+                          text: "Your Message",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -45,20 +55,29 @@ class distressMessage extends StatelessWidget {
                         height: 300,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: colorconstant.containerbox),
+                          borderRadius: BorderRadius.circular(20),
+                          color: colorconstant.containerbox,
+                        ),
                         child: Center(
-                            child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "This a Distress message please help ! i am in a Emergency situation",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500),
-                            textAlign: TextAlign.justify,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ValueListenableBuilder(
+                              valueListenable: Hive.box<String>('distress_messages').listenable(),
+                              builder: (context, Box<String> box, _) {
+                                var savedMessage = box.get('message', defaultValue: '');
+                                return Text(
+                                  savedMessage.toString(),
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  textAlign: TextAlign.justify,
+                                );
+                              },
+                            ),
                           ),
-                        )),
+                        ),
                       ),
                     )
                   ],
@@ -76,47 +95,47 @@ class distressMessage extends StatelessWidget {
                   scrollable: true,
                   content: Column(
                     children: [
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10),
                       TextField(
                         keyboardType: TextInputType.multiline,
                         textInputAction: TextInputAction.newline,
                         autofocus: true,
                         maxLines: 5,
                         textAlign: TextAlign.center,
-                        controller: messagecontroller,
+                        controller: messageController,
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(vertical: 50),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            hintText: "enter the name"),
+                          contentPadding: EdgeInsets.symmetric(vertical: 50),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintText: "Enter the message",
+                        ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10),
                     ],
                   ),
                   actions: [
                     OutlinedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          messagecontroller.clear();
-                        },
-                        child: Text("cancel")),
-
-                    // save button
+                      onPressed: () {
+                        Navigator.pop(context);
+                        messageController.clear();
+                      },
+                      child: Text("Cancel"),
+                    ),
                     ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll(Colors.red[700])),
-                        onPressed: () {
-                          //******************** save to hive**************************//
-                        },
-                        child: Text(
-                          'Save',
-                          style: TextStyle(color: Colors.white),
-                        ))
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            Colors.red[700] ?? Colors.red),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        saveMessage(messageController.text);
+                      },
+                      child: Text(
+                        'Save',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -124,18 +143,26 @@ class distressMessage extends StatelessWidget {
                 width: 200,
                 height: 50,
                 child: Center(
-                    child: Text(
-                  'Edit',
-                  style: TextStyle(color: Colors.white),
-                )),
+                  child: Text(
+                    'Edit',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
                 decoration: BoxDecoration(
-                    color: colorconstant.inactivebutton,
-                    borderRadius: BorderRadius.circular(20)),
+                  color: colorconstant.inactivebutton,
+                  borderRadius: BorderRadius.circular(20),
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),
     );
+  }
+
+  void saveMessage(String message) async {
+    var box = await Hive.openBox<String>('distress_messages');
+    await box.put('message', message);
+    print("Message saved: $message");
   }
 }

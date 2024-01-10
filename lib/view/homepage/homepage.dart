@@ -479,29 +479,28 @@ class _MyDialogState extends State<MyDialog> {
   }
 
   _launchSMS(Box<contactmodel> contactBox) async {
-    final String message =
-        'This a Distress message please help ! i am in a Emergency situation'; // Replace with your desired message
+  final distressMessage =
+      Hive.box<String>('distress_messages').get('message', defaultValue: '');
 
-    List<String> phoneNumbers = [];
+  final String message =
+      'Distress Message: $distressMessage';
 
-    // Retrieve all numbers from the contact box
-    for (int i = 0; i < contactBox.length; i++) {
-      final contact = contactBox.getAt(i);
-      if (contact != null) {
-        phoneNumbers.add(contact.Phonenumber.toString());
-      }
-    }
+  List<String> phoneNumbers = [];
 
-    // Construct the SMS URL with the recipient's phone numbers and the message
-    final Uri uri = Uri.parse('sms:${phoneNumbers.join(',')}?body=$message');
-
-    // Check if the URL can be launched
-    if (await canLaunchUrl(uri)) {
-      // Launch the messaging app
-      await launchUrl(uri);
-    } else {
-      // Handle error
-      print('Could not launch SMS');
+  for (int i = 0; i < contactBox.length; i++) {
+    final contact = contactBox.getAt(i);
+    if (contact != null) {
+      phoneNumbers.add(contact.Phonenumber.toString());
     }
   }
+
+  final Uri uri = Uri.parse('sms:${phoneNumbers.join(',')}?body=$message');
+
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    print('Could not launch SMS');
+  }
+}
+
 }

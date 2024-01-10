@@ -13,6 +13,8 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(contactmodelAdapter());
   await Hive.openBox<contactmodel>('contact');
+  await Hive.openBox<String>('distress_messages');
+  
 
   runApp(Myapp());
 }

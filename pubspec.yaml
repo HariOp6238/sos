@@ -55,6 +55,7 @@ dependencies:
   hive_flutter:
   hive_generator:
   build_runner:
+  flutter_app_icons: ^0.0.8
  
 
 dev_dependencies:
