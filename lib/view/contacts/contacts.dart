@@ -31,7 +31,6 @@ class _ContactState extends State<Contact> {
 
   @override
   void initState() {
-    // print(contacts[1].Phonenumber);
     super.initState();
   }
 
