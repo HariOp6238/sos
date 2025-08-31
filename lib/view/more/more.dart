@@ -16,7 +16,7 @@ class More extends StatefulWidget {
 class _MoreState extends State<More> {
   List<String> optionslist = [
     "Settings",
-    "Distress Message",
+    "Report Disaster",
     "Help and Support",
     "About",
     "Privacy and Policy",

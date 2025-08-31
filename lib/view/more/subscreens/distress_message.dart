@@ -19,7 +19,7 @@ class _DistressMessageState extends State<DistressMessage> {
         backgroundColor: Colors.red.shade700,
         centerTitle: true,
         title: Text(
-          "Message Options",
+          "REPORT",
           style: TextStyle(fontSize: 25),
         ),
       ),
@@ -40,7 +40,7 @@ class _DistressMessageState extends State<DistressMessage> {
                       padding: const EdgeInsets.all(8.0),
                       child: RichText(
                         text: TextSpan(
-                          text: "Your Message",
+                          text: "Report Disaster",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -62,9 +62,12 @@ class _DistressMessageState extends State<DistressMessage> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: ValueListenableBuilder(
-                              valueListenable: Hive.box<String>('distress_messages').listenable(),
+                              valueListenable:
+                                  Hive.box<String>('distress_messages')
+                                      .listenable(),
                               builder: (context, Box<String> box, _) {
-                                var savedMessage = box.get('message', defaultValue: '');
+                                var savedMessage =
+                                    box.get('message', defaultValue: '');
                                 return Text(
                                   savedMessage.toString(),
                                   style: TextStyle(
@@ -88,7 +91,7 @@ class _DistressMessageState extends State<DistressMessage> {
               onTap: () => showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: Center(child: Text("Edit Message")),
+                  title: Center(child: Text("Report")),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -144,7 +147,7 @@ class _DistressMessageState extends State<DistressMessage> {
                 height: 50,
                 child: Center(
                   child: Text(
-                    'Edit',
+                    'Report',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

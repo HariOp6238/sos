@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "C:/Users/Akshay/Desktop/sos/sos/linux"
+    "cmake.sourceDirectory": "C:/Users/Akshay/Desktop/sos/sos/linux",
+    "java.compile.nullAnalysis.mode": "automatic"
 }

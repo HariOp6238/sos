@@ -48,7 +48,7 @@ class About extends StatelessWidget {
                             Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  "We are a homegrown Indian company that started in 2023 when our founders felt they could revolutionize emergency alerting by making current solutions easier to use, more affordable and scalable so that communities and workplaces of all sizes can benefit from solutions previously only available to a few who could afford them.",
+                                  "We are a homegrown Indian company that started in 2025 when our founders felt they could revolutionize emergency alerting by making current solutions easier to use, more affordable and scalable so that communities and workplaces of all sizes can benefit from solutions previously only available to a few who could afford them.",
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
                                       fontSize: 16,
@@ -57,52 +57,9 @@ class About extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "Meet our founders.",
+                                "Meet our founder",
                                 style: TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "Akshay Murali",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                Icon(Icons.email),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Akshay Raj  ",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Icon(Icons.email),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Anver Sadath  ",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-
-                                  Icon(Icons.email),
-                                ],
                               ),
                             ),
                             Row(
@@ -116,22 +73,6 @@ class About extends StatelessWidget {
                                 ),
                                 Icon(Icons.email),
                               ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Vinsha Vishwanath  ",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-
-                                  Icon(Icons.email),
-                                ],
-                              ),
                             ),
                           ],
                         ),
