@@ -1,4 +1,4 @@
-# 🚨 SOS Emergency App
+# 🚨 SOS Emergency App(RapidResponse)
 
 A Flutter-based SOS Emergency Application designed to provide quick help during emergency situations. With a single tap, users can send emergency alerts, share their live location, and notify saved emergency contacts instantly.
 
