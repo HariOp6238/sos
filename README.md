@@ -1,16 +1,38 @@
-# sos
+# 🚨 SOS Emergency App
 
-A new Flutter project.
+A Flutter-based SOS Emergency Application designed to provide quick help during emergency situations. With a single tap, users can send emergency alerts, share their live location, and notify saved emergency contacts instantly.
 
-## Getting Started
+## 📱 Features
 
-This project is a starting point for a Flutter application.
+- 🚨 One-Tap SOS Alert
+- 📍 Real-Time Location Sharing
+- 👥 Emergency Contact Management
+- 📞 Quick Call Emergency Services
+- 🔔 Instant Notifications
+- 🔒 Secure User Authentication
+- 📱 Clean and User-Friendly UI
+- 📱 Realtime News 
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠️ Built With
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter
+- Dart
+- Firebase Authentication
+- Cloud Firestore
+- Firebase Cloud Messaging (FCM)
+- Geolocator
+- Provider / State Management
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+   ## 📸 Screenshots
+
+  <img width="1080" height="2400" alt="Screenshot_2023-11-23-10-09-58-10_39d77b17af27f0e1afd33239f4d50fde" src="https://github.com/user-attachments/assets/fade39c8-4b6c-4a7c-ac51-ab98671ff941" />
+<img width="1080" height="2400" alt="Screenshot_2023-11-18-19-20-03-60_39d77b17af27f0e1afd33239f4d50fde" src="https://github.com/user-attachments/assets/d40fc62a-3e32-41fa-8954-4503987fcac1" />
+<img width="1080" height="2400" alt="Screenshot_2023-11-18-19-20-52-59_39d77b17af27f0e1afd33239f4d50fde" src="https://github.com/user-attachments/assets/2f070b32-dfa2-4705-bf8a-6c3521f096d3" />
+<img width="1080" height="2400" alt="Screenshot_2023-11-18-19-20-09-43_39d77b17af27f0e1afd33239f4d50fde" src="https://github.com/user-attachments/assets/dd14b6a8-18bd-4ce1-8d34-8d7edb083b0f" />
+<img width="1080" height="2400" alt="Screenshot_2023-11-18-19-20-13-04_39d77b17af27f0e1afd33239f4d50fde" src="https://github.com/user-attachments/assets/53fabdc0-06c4-416d-9e37-f1670bf647b8" />
+
+<img width="1080" height="2400" alt="Screenshot_2023-11-18-19-20-16-83_39d77b17af27f0e1afd33239f4d50fde" src="https://github.com/user-attachments/assets/3f057968-0920-462b-aa1b-61e48b3a8e02" />
+<img width="1080" height="2400" alt="Screenshot_2023-11-18-19-20-37-81_39d77b17af27f0e1afd33239f4d50fde - Copy" src="https://github.com/user-attachments/assets/4f976c51-1f3b-41d7-a666-7762eac3ad29" />
+
+
+
